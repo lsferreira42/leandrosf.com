@@ -1,0 +1,7 @@
+public
+.bloglist.md
+*.pyc
+*.pyo
+*.swp
+.vscode
+.DS_Store
