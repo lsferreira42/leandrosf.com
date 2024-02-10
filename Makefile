@@ -1,8 +1,8 @@
 ### CHANGE ME ######################
 DOMAIN           = www.leandrosf.com
 URL              = https://$(DOMAIN)
-RSYNC_TARGET     = $(DOMAIN):/var/www/$(DOMAIN)
-FEED_TITLE       = leandro ferreira blog
+RSYNC_TARGET     = root@${REMOTE_ADDR}:/var/www/$(DOMAIN)
+FEED_TITLE       = Blog do Leandro Ferreira
 FEED_DESCRIPTION = Desenvolvimento, devops e o que vier na cabeça
 STATIC_REGEX     = .*\.(html|css|jpg|jpeg|png|ico|xml|txt|asc)
 BLOG_LIST_LIMIT  = 10
@@ -114,4 +114,8 @@ clean:
 	rm -f $(SOURCE_DIR)/$(BLOG_DIR)/$(BLOG_LIST_FILE)
 
 rsync: public
-	rsync -rlphv --delete $(OUTPUT_DIR)/ $(RSYNC_TARGET)
+	@if [ -z "${REMOTE_ADDR}" ]; then \
+		echo "REMOTE_ADDR is not defined"; \
+		exit 1; \
+	fi
+	rsync -rlphv -e 'ssh -p 28654' --delete $(OUTPUT_DIR)/ $(RSYNC_TARGET)
