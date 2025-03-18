@@ -1,11 +1,40 @@
 {{- define "main" }}
 
+{{- if .Site.Params.profileMode.enabled }}
+<div class="profile-page">
+    <div class="profile-image">
+        {{- with .Site.Params.profileMode.imageUrl }}
+        <img src="{{ . }}" alt="{{ $.Site.Params.profileMode.imageTitle | default "Profile Image" }}" width="{{ $.Site.Params.profileMode.imageWidth | default 200 }}" height="{{ $.Site.Params.profileMode.imageHeight | default 200 }}">
+        {{- end }}
+    </div>
+    <div class="profile-details">
+        <h1>{{ .Site.Params.profileMode.title | default .Site.Title }}</h1>
+        {{- with .Site.Params.profileMode.subtitle }}
+        <p>{{ . }}</p>
+        {{- end }}
+    </div>
+    <div class="profile-buttons">
+        {{- range .Site.Params.profileMode.buttons }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- end }}
+    </div>
+    <div class="social-icons">
+        {{- range .Site.Params.socialIcons }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+        {{- end }}
+    </div>
+</div>
+{{- else }}
 <header class="page-header">
   <h1>{{ .Title }}</h1>
 </header>
-
 <article class="post-content">
+  {{ if .Content }}
   {{ .Content }}
+  {{ else }}
+  <p>Bem-vindo ao meu site pessoal!</p>
+  {{ end }}
 </article>
+{{- end }}
 
 {{- end }}{{- /* end main */ -}} 

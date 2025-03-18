@@ -10,6 +10,46 @@ comments = true
 ShowCodeCopyButtons = true
 homeInfoParams = { Title = "Bem-vindo ao meu site", Content = "Meu site pessoal onde compartilho projetos, ideias e conhecimentos." }
 
+# Profile Mode
+[params.profileMode]
+enabled = true
+title = "Leandro Ferreira"
+subtitle = "Especialista SRE/DevOps | Desenvolvedor | Cloud"
+imageUrl = "/pic.jpeg"
+imageWidth = 300
+imageHeight = 300
+imageTitle = "Leandro Ferreira"
+
+# Botões
+[[params.profileMode.buttons]]
+name = "Sobre"
+url = "/pages/sobre"
+
+[[params.profileMode.buttons]]
+name = "Projetos"
+url = "/projetos"
+
+[[params.profileMode.buttons]]
+name = "Blog"
+url = "/posts"
+
+# Social Icons
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/lsferreira42"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/lsferreira42/"
+
+[[params.socialIcons]]
+name = "cv"
+url = "https://github.com/lsferreira42/cv"
+
+[[params.socialIcons]]
+name = "bluesky"
+url = "https://bsky.app/profile/leandrosf.com"
+
 [menu]
 
 [[menu.main]]
