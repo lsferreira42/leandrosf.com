@@ -1,0 +1,40 @@
+baseURL = "https://www.leandrosf.com"
+title = "Leandro Ferreira"
+theme = "PaperMod"
+languageCode = "pt-br"
+
+[params]
+ShowReadingTime = true
+ShowBreadCrumbs = true
+comments = true
+ShowCodeCopyButtons = true
+homeInfoParams = { Title = "Bem-vindo ao meu site", Content = "Meu site pessoal onde compartilho projetos, ideias e conhecimentos." }
+
+[menu]
+
+[[menu.main]]
+identifier = "sobre"
+name = "Sobre"
+url = "/pages/sobre/"
+weight = 1
+
+[[menu.main]]
+identifier = "projetos"
+name = "Projetos"
+url = "/projetos/"
+weight = 2
+
+[[menu.main]]
+identifier = "blog"
+name = "Blog"
+url = "/posts/"
+weight = 3
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[markup]
+
+  [markup.highlight]
+  style = "monokai"

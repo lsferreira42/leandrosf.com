@@ -1,0 +1,11 @@
+/* Estilos personalizados */
+
+.center {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.center figcaption {
+  text-align: center;
+} 
