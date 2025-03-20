@@ -8,4 +8,75 @@
 
 .center figcaption {
   text-align: center;
+}
+
+/* Estilos para a seção de posts recentes */
+.recent-posts {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 650px;
+}
+
+.recent-posts h2 {
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.post-item {
+  margin-bottom: 1.05rem;
+  padding-bottom: 1.05rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.post-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.post-date {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  opacity: 0.8;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.post-summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--content);
+  margin-top: 0.3rem;
+}
+
+/* Correção para o breadcrumb na página Sobre */
+.post-header .breadcrumbs {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.post-title {
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+/* Ajuste para outras páginas single */
+article.post-single .post-header {
+  display: block;
 } 

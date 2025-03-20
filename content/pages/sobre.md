@@ -8,7 +8,7 @@ draft = false
 
 ## Quem sou eu
 
-Olá, sou Leandro Ferreira, especialista SRE/DevOps e desenvolvedor de software com mais de 10 anos de experiência em infraestrutura, automação e desenvolvimento. Atualmente trabalho na Magalu Cloud onde foco no time de IAAS provendo e cuidando de infraestrutura para os desenvolvedores e outras equipes.
+Olá, sou Leandro Ferreira, especialista SRE/DevOps e desenvolvedor de software com mais de 15 anos de experiência em infraestrutura, automação e desenvolvimento. Atualmente trabalho na Magalu Cloud onde foco no time de IAAS provendo e cuidando de infraestrutura para os desenvolvedores e outras equipes.
 
 ## Minha jornada
 
