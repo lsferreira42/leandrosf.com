@@ -8,6 +8,7 @@ help: ## Show this help menu
 
 build: ## Build the Hugo site
 	@echo "Building Hugo site..."
+	git submodule update --init --recursive
 	hugo
 
 image: build ## Build the Nginx Docker image (after building Hugo site)

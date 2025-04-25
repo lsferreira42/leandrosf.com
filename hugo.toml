@@ -23,15 +23,15 @@ imageTitle = "Leandro Ferreira"
 # Botões
 [[params.profileMode.buttons]]
 name = "Sobre"
-url = "/pages/sobre"
+url = "/pages/sobre/"
 
 [[params.profileMode.buttons]]
 name = "Projetos"
-url = "/projetos"
+url = "/projetos/"
 
 [[params.profileMode.buttons]]
 name = "Blog"
-url = "/posts"
+url = "/posts/"
 
 # Social Icons
 [[params.socialIcons]]
