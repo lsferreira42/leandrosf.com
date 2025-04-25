@@ -23,7 +23,7 @@ imageTitle = "Leandro Ferreira"
 # Botões
 [[params.profileMode.buttons]]
 name = "Sobre"
-url = "/pages/sobre/"
+url = "/sobre/"
 
 [[params.profileMode.buttons]]
 name = "Projetos"
@@ -55,7 +55,7 @@ url = "https://bsky.app/profile/leandrosf.com"
 [[menu.main]]
 identifier = "sobre"
 name = "Sobre"
-url = "/pages/sobre/"
+url = "/sobre/"
 weight = 1
 
 [[menu.main]]

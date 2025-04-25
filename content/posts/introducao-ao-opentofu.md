@@ -1,121 +1,62 @@
 +++
-title = "Introdução ao OpenTofu: Alternativa Open Source ao Terraform"
+title = "OpenTofu: Como iniciar no fork do terraform"
 date = "2025-03-20T10:00:00-03:00"
 draft = false
 tags = ["infraestrutura", "iac", "devops", "opentofu", "terraform", "docker"]
 +++
 
-## O que é Terraform?
+![OpenTofu vs Terraform](/images/opentofu-terraform.png)
 
-O Terraform é uma ferramenta de Infraestrutura como Código (IaC) desenvolvida pela HashiCorp em 2014. Ela permite que você defina recursos de infraestrutura em arquivos de configuração que podem ser versionados, reutilizados e compartilhados. Com o Terraform, é possível criar, modificar e versionar infraestrutura de forma segura e eficiente.
+**Se você usa Terraform e está preocupado com a mudança de licença da HashiCorp, o OpenTofu é a solução. Neste guia, você aprenderá a migrar para o OpenTofu e criar infraestrutura com Docker em menos de 10 minutos.**
 
-Características principais do Terraform:
+## O que aconteceu com o Terraform?
 
-- **Declarativo:** Você descreve o estado desejado da sua infraestrutura, e o Terraform se encarrega de realizar as ações necessárias para alcançá-lo.
-- **Multiplataforma:** Suporta diversos provedores de nuvem (AWS, GCP, Azure) e serviços (Docker, Kubernetes, etc).
-- **Planos de Execução:** Permite visualizar mudanças antes de aplicá-las.
-- **Grafos de Dependência:** Cria automaticamente grafos de dependências entre recursos.
+Em agosto de 2023, a HashiCorp mudou a licença do Terraform de Mozilla Public License (open source) para Business Source License (proprietária). Isso causou preocupação em empresas e desenvolvedores que dependiam da natureza aberta da ferramenta.
 
-## O Conflito na Comunidade Terraform
+{{< figure src="/images/license-change-timeline.png" caption="Timeline da mudança de licença do Terraform" >}}
 
-Em agosto de 2023, a HashiCorp anunciou uma mudança significativa na licença do Terraform e de outros produtos da empresa, migrando da licença Mozilla Public License v2.0 (MPL 2.0) para a Business Source License (BUSL 1.1). Esta alteração removeu a natureza completamente open source do Terraform.
+Como resposta, a Linux Foundation e várias empresas criaram o **OpenTofu**, um fork 100% compatível com o Terraform que mantém a licença open source original.
 
-A mudança gerou preocupações na comunidade por diversos motivos:
+### O que você precisa saber sobre o OpenTofu:
 
-1. **Restrições de uso:** A BUSL limita o uso comercial do código em certos contextos.
-2. **Incerteza jurídica:** Empresas passaram a questionar como a nova licença afetaria seus fluxos de trabalho.
-3. **Dependência de fornecedor:** Aumentou a dependência da comunidade em relação às decisões da HashiCorp.
+1. É um drop-in replacement (substituto direto) do Terraform
+2. Mantém a mesma sintaxe e comandos (apenas troque `terraform` por `tofu`)
+3. Funciona com seu estado e módulos Terraform existentes
+4. Continua sendo open source sob a licença MPL 2.0
 
-Este movimento criou uma divisão na comunidade, pois muitos usuários e empresas dependiam do Terraform como solução open source para suas necessidades de infraestrutura como código.
+## Instalação rápida em qualquer sistema
 
-## OpenTofu: O Fork da Comunidade
+Escolha seu sistema operacional:
 
-Como resposta à mudança de licença, a Linux Foundation, com apoio de empresas como Gruntwork, Spacelift e muitas outras, anunciou a criação do projeto OpenTofu. Este projeto é um fork do Terraform, mantendo-se sob a licença MPL 2.0, garantindo que continue sendo verdadeiramente open source.
-
-O OpenTofu mantém compatibilidade com o ecossistema Terraform existente, incluindo:
-
-- Compatibilidade com arquivos de estado do Terraform
-- Suporte a provedores do Terraform Registry
-- Compatibilidade com módulos existentes
-
-Este fork representa um esforço da comunidade para preservar uma alternativa genuinamente open source para o gerenciamento de infraestrutura como código.
-
-## Instalando o OpenTofu
-
-Vamos ver como instalar o OpenTofu em diferentes sistemas operacionais:
-
-### Linux
-
-Para distribuições baseadas em Debian/Ubuntu:
-
+### Linux (Ubuntu/Debian)
 ```bash
-# Adicione a chave GPG
+# Adicione a chave GPG e repositório
 sudo wget -O- https://apt.releases.opentofu.org/opentofu.gpg | sudo gpg --dearmor -o /usr/share/keyrings/opentofu-archive-keyring.gpg
-
-# Adicione o repositório
 echo "deb [signed-by=/usr/share/keyrings/opentofu-archive-keyring.gpg] https://apt.releases.opentofu.org $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/opentofu.list > /dev/null
 
-# Atualize e instale
+# Instale
 sudo apt-get update && sudo apt-get install opentofu
 ```
 
-Para Red Hat/Fedora:
-
-```bash
-# Adicione o repositório
-sudo tee /etc/yum.repos.d/opentofu.repo << 'EOF'
-[opentofu]
-name=OpenTofu
-baseurl=https://yum.releases.opentofu.org/yum/
-enabled=1
-gpgcheck=1
-gpgkey=https://yum.releases.opentofu.org/gpg
-EOF
-
-# Instale
-sudo yum install -y opentofu
-```
-
 ### macOS
-
-Usando Homebrew:
-
 ```bash
 brew install opentofu
 ```
 
 ### Windows
-
-Usando Chocolatey:
-
 ```powershell
 choco install opentofu
 ```
 
-Ou baixe o binário diretamente do [repositório oficial](https://github.com/opentofu/opentofu/releases) e adicione ao PATH.
+Verifique a instalação com `tofu version`. Viu como é fácil?
 
-## Verificando a instalação
+## Tutorial prático: Crie uma stack Docker completa em 5 minutos
 
-Para confirmar que o OpenTofu foi instalado corretamente:
+Vamos criar três containers interconectados usando OpenTofu: uma API Node.js, um banco de dados MySQL e um Redis para cache. Este exemplo demonstra como o OpenTofu gerencia facilmente infraestrutura local ou em nuvem.
 
-```bash
-tofu version
-```
+{{< figure src="/images/docker-stack-architecture.png" caption="Arquitetura da stack Docker que vamos criar" >}}
 
-Você deverá ver algo como:
-
-```
-OpenTofu v1.6.0
-on darwin_amd64
-```
-
-## Criando Infraestrutura Docker com OpenTofu
-
-Vamos criar uma infraestrutura Docker contendo três containers: uma aplicação, um banco de dados MySQL e um Redis para cache. Este exemplo simples demonstra como o OpenTofu pode ser usado para gerenciar infraestrutura local.
-
-### 1. Estrutura do Projeto
-
-Crie uma pasta para o projeto e os arquivos necessários:
+### 1. Crie a estrutura do projeto
 
 ```bash
 mkdir opentofu-docker-demo
@@ -123,9 +64,9 @@ cd opentofu-docker-demo
 touch main.tf variables.tf outputs.tf
 ```
 
-### 2. Configurando o Provedor Docker
+### 2. Configure o provedor Docker
 
-Edite o arquivo `main.tf` para configurar o provedor Docker:
+Cole no arquivo `main.tf`:
 
 ```hcl
 terraform {
@@ -139,15 +80,15 @@ terraform {
 
 provider "docker" {}
 
-# Criar uma rede Docker para comunicação entre containers
+# Rede para comunicação entre containers
 resource "docker_network" "app_network" {
   name = "app_network"
 }
 ```
 
-### 3. Definindo Variáveis
+### 3. Defina as variáveis
 
-Edite o arquivo `variables.tf` para definir as variáveis que usaremos:
+Cole no arquivo `variables.tf`:
 
 ```hcl
 variable "mysql_root_password" {
@@ -183,9 +124,9 @@ variable "app_port" {
 }
 ```
 
-### 4. Criando os Containers
+### 4. Crie os containers
 
-Adicione ao `main.tf` a definição dos três containers:
+Adicione ao arquivo `main.tf`:
 
 ```hcl
 # Container MySQL
@@ -237,7 +178,7 @@ resource "docker_container" "redis" {
   }
 }
 
-# Container da Aplicação (usando uma imagem Node.js simples como exemplo)
+# Container da Aplicação
 resource "docker_container" "app" {
   name  = "app"
   image = "node:14-alpine"
@@ -259,8 +200,8 @@ resource "docker_container" "app" {
     "REDIS_HOST=redis"
   ]
   
-  # Este comando mantém o container rodando (em produção, você executaria sua aplicação real)
-  command = ["sh", "-c", "echo 'App is running...' && tail -f /dev/null"]
+  # Mantém o container rodando
+  command = ["sh", "-c", "echo 'App is running on port ${var.app_port}...' && tail -f /dev/null"]
   
   depends_on = [
     docker_container.mysql,
@@ -269,21 +210,21 @@ resource "docker_container" "app" {
 }
 ```
 
-### 5. Definindo Outputs
+### 5. Configure os outputs
 
-Edite o arquivo `outputs.tf` para exibir informações úteis após a criação:
+Cole no arquivo `outputs.tf`:
 
 ```hcl
 output "app_container_ip" {
-  value = docker_container.app.ip_address
+  value = docker_container.app.network_data[0].ip_address
 }
 
 output "mysql_container_ip" {
-  value = docker_container.mysql.ip_address
+  value = docker_container.mysql.network_data[0].ip_address
 }
 
 output "redis_container_ip" {
-  value = docker_container.redis.ip_address
+  value = docker_container.redis.network_data[0].ip_address
 }
 
 output "app_access_url" {
@@ -291,53 +232,59 @@ output "app_access_url" {
 }
 ```
 
-### 6. Executando o OpenTofu
+### 6. Execute o OpenTofu
 
-Agora, vamos usar o OpenTofu para criar nossa infraestrutura:
+Agora, execute:
 
 ```bash
-# Inicializar o diretório de trabalho
+# Inicializar
 tofu init
 
-# Ver o plano de mudanças
+# Verificar mudanças
 tofu plan
 
-# Aplicar as mudanças
-tofu apply
-
-# Para confirmar, digite "yes"
+# Criar a infraestrutura
+tofu apply -auto-approve
 ```
 
-### 7. Verificando a Infraestrutura
+{{< figure src="/images/opentofu-apply-output.png" caption="Saída do comando tofu apply mostrando a criação bem-sucedida dos containers" >}}
 
-Após a execução bem-sucedida, você pode verificar se os containers foram criados:
+### Verificando a infraestrutura
 
 ```bash
 docker ps
 ```
 
-Você deverá ver três containers rodando: app, mysql e redis.
+Pronto! Você acabou de criar uma stack Docker completa com OpenTofu. Para destruir, execute `tofu destroy -auto-approve`.
 
-### 8. Removendo a Infraestrutura
+## Próximos passos
 
-Quando terminar de usar a infraestrutura, você pode removê-la com:
+Este tutorial cobriu apenas o básico do OpenTofu. A ferramenta suporta todos os recursos do Terraform que você já conhece:
 
-```bash
-tofu destroy
-# Para confirmar, digite "yes"
-```
+- Gerenciamento de múltiplas clouds (AWS, GCP, Azure)
+- Módulos reutilizáveis e composições
+- Workspaces para ambientes isolados
+- Backends remotos para colaboração em equipe
+- Importação de recursos existentes
 
-## Conclusão
+## Dúvidas frequentes
 
-O OpenTofu surge como uma alternativa viável ao Terraform, mantendo a natureza open source que muitos usuários valorizam. Neste post, vimos como o projeto nasceu a partir de um conflito de licenciamento, como instalá-lo em diferentes sistemas e como usá-lo para gerenciar uma infraestrutura Docker simples.
+**P: Preciso migrar meus arquivos de estado?**  
+R: Não! O OpenTofu usa o mesmo formato de arquivo de estado do Terraform.
 
-Essa infraestrutura demonstra apenas uma pequena parte do que é possível fazer com OpenTofu. O ecossistema permite gerenciar desde ambientes locais até complexas arquiteturas multi-cloud com a mesma facilidade e sintaxe declarativa.
+**P: Os módulos do Terraform Registry funcionam?**  
+R: Sim, todos os módulos e provedores do ecossistema Terraform são compatíveis.
 
-À medida que o projeto evolui, espera-se que a comunidade contribua com novos recursos e melhorias, mantendo a ferramenta atualizada e relevante no dinâmico mundo da infraestrutura como código.
+**P: O OpenTofu tem suporte comercial?**  
+R: Sim, várias empresas como Spacelift e Gruntwork oferecem suporte para OpenTofu.
 
-## Referências
+**P: É seguro usar em produção?**  
+R: Absolutamente! Grandes empresas já migraram suas cargas de trabalho para o OpenTofu.
+
+## Recursos
 
 - [Site oficial do OpenTofu](https://opentofu.org/)
 - [Repositório GitHub do OpenTofu](https://github.com/opentofu/opentofu)
 - [Documentação do provedor Docker](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs)
-- [Anúncio sobre a mudança de licença da HashiCorp](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license) 
+- [Anúncio sobre a mudança de licença da HashiCorp](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license)
+- [OpenTofu vs. Terraform: Análise completa](https://opensource.com/article/23/10/opentofu-terraform-fork) 
