@@ -1,13 +1,18 @@
 FROM nginx:alpine
 
-# Copy the pre-built static files
+RUN apk add --no-cache curl vim
+
+RUN rm -rf /usr/share/nginx/html/*
+
 COPY public/ /usr/share/nginx/html/
 
-# Configure nginx to listen on port 9034
-RUN sed -i 's/listen\s*80;/listen 9034;/g' /etc/nginx/conf.d/default.conf
+RUN chmod -R 755 /usr/share/nginx/html && \
+    chown -R nginx:nginx /usr/share/nginx/html
 
-# Expose port 9034
+RUN sed -i 's/user  nginx;/user nginx;/' /etc/nginx/nginx.conf
+
+RUN nginx -t
+
 EXPOSE 9034
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"] 
+CMD ["nginx", "-g", "daemon off;"]

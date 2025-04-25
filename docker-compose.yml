@@ -7,10 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9034:9034"
-#    networks:
-#      - nginx_proxy_network
+    networks:
+      - nginx_proxy_network
     restart: unless-stopped
 
-#networks:
-#  nginx_proxy_network:
-#    external: true 
+networks:
+  nginx_proxy_network:
+    external: true 
