@@ -27,11 +27,44 @@
     <!-- Recent Posts Section -->
     <div class="recent-posts">
         <h2>Posts Recentes</h2>
+        <style>
+          .post-item-home {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: transform 0.2s;
+          }
+          .post-item-home:hover {
+            transform: scale(1.01);
+            background-color: var(--entry);
+          }
+          .post-title-home {
+            text-align: left;
+            margin: 0;
+            padding: 0;
+          }
+          .post-date-home {
+            text-align: right;
+            color: var(--secondary);
+            font-size: 0.9em;
+            min-width: 100px;
+          }
+        </style>
         {{- $pages := where site.RegularPages "Type" "in" (slice "posts") }}
         {{- $limit := 3 }}
         {{- range (first $limit $pages) }}
-        <div class="post-item">
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <div class="post-item-home">
+            <div class="post-title-home">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            </div>
+            <div class="post-date-home">
+                {{- if not .Date.IsZero }}
+                <span>{{ .Date.Format (default "2006-01-02" site.Params.DateFormat) }}</span>
+                {{- end }}
+            </div>
         </div>
         {{- end }}
     </div>
