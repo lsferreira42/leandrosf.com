@@ -50,6 +50,10 @@ url = "https://github.com/lsferreira42/cv"
 name = "bluesky"
 url = "https://bsky.app/profile/leandrosf.com"
 
+[[params.socialIcons]]
+name = "rss"
+url = "/index.xml"
+
 [menu]
 
 [[menu.main]]
@@ -69,6 +73,12 @@ identifier = "blog"
 name = "Blog"
 url = "/posts/"
 weight = 3
+
+[[menu.main]]
+identifier = "rss"
+name = "RSS"
+url = "/index.xml"
+weight = 4
 
 [taxonomies]
 tag = "tags"

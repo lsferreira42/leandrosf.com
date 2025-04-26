@@ -255,7 +255,9 @@ tofu apply -auto-approve
 docker ps
 ```
 
-Pronto! Você acabou de criar uma stack Docker completa com OpenTofu. Para destruir, execute `tofu destroy -auto-approve`.
+Pronto! Você acabou de criar uma stack Docker completa com OpenTofu. Para destruir, execute 
+
+`tofu destroy -auto-approve`
 
 ## Próximos passos
 
