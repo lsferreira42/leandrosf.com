@@ -7,7 +7,7 @@ tags = ["infraestrutura", "iac", "devops", "opentofu", "terraform", "docker"]
 
 ![OpenTofu vs Terraform](/images/opentofu-terraform.png)
 
-**Se você usa Terraform e está preocupado com a mudança de licença da HashiCorp, o OpenTofu é a solução. Neste guia, você aprenderá a migrar para o OpenTofu e criar infraestrutura com Docker em menos de 10 minutos.**
+**O OpenTofu é um fork open source do Terraform, criado depois da mudança de licença da HashiCorp. Este guia mostra como instalar o OpenTofu e provisionar uma stack Docker local com três containers.**
 
 ## O que aconteceu com o Terraform?
 
@@ -48,11 +48,11 @@ brew install opentofu
 choco install opentofu
 ```
 
-Verifique a instalação com `tofu version`. Viu como é fácil?
+Verifique a instalação com `tofu version`.
 
-## Tutorial prático: Crie uma stack Docker completa em 5 minutos
+## Tutorial: stack Docker com três containers
 
-Vamos criar três containers interconectados usando OpenTofu: uma API Node.js, um banco de dados MySQL e um Redis para cache. Este exemplo demonstra como o OpenTofu gerencia facilmente infraestrutura local ou em nuvem.
+Vamos criar três containers interconectados usando OpenTofu: uma API Node.js, um banco de dados MySQL e um Redis para cache. O mesmo fluxo funciona para infraestrutura local ou em nuvem.
 
 {{< figure src="/images/docker-stack-architecture.png" caption="Arquitetura da stack Docker que vamos criar" >}}
 
@@ -255,7 +255,7 @@ tofu apply -auto-approve
 docker ps
 ```
 
-Pronto! Você acabou de criar uma stack Docker completa com OpenTofu. Para destruir, execute 
+Isso cria a stack Docker completa com OpenTofu. Para destruir, execute 
 
 `tofu destroy -auto-approve`
 
@@ -281,7 +281,7 @@ R: Sim, todos os módulos e provedores do ecossistema Terraform são compatívei
 R: Sim, várias empresas como Spacelift e Gruntwork oferecem suporte para OpenTofu.
 
 **P: É seguro usar em produção?**  
-R: Absolutamente! Grandes empresas já migraram suas cargas de trabalho para o OpenTofu.
+R: Sim. Várias empresas já migraram cargas de trabalho de produção para o OpenTofu.
 
 ## Recursos
 

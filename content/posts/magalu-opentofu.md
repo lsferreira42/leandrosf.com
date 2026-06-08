@@ -7,7 +7,7 @@ tags = ["infraestrutura","iac","devops","magalucloud","opentofu","terraform"]
 
 ![Magalu Cloud + OpenTofu](/images/magalu-opentofu.png)
 
-**Com OpenTofu e os módulos oficiais da Magalu Cloud, você provisiona recursos em minutos, mantendo sua infraestrutura como código 100% open source. Neste post vamos explorar diversas opções do provider MGC e usar a variável de ambiente `MAGALU_API_KEY` para fornecer sua chave de API de forma segura.**
+**Este post mostra como usar o provider MGC da Magalu Cloud com OpenTofu para provisionar VMs, volumes, object storage, Kubernetes e bancos de dados gerenciados. A chave de API é fornecida pela variável de ambiente `TF_VAR_mgc_api_key`.**
 
 ## O que é OpenTofu?
 
@@ -91,7 +91,7 @@ Em `variables.tf`, declare as variáveis necessárias:
 
 ```hcl
 variable "mgc_api_key" {
-  description = "API Key da Magalu Cloud via variável de ambiente MAGALU_API_KEY"
+  description = "API Key da Magalu Cloud via variável de ambiente TF_VAR_mgc_api_key"
   type        = string
   sensitive   = true
 }
@@ -424,7 +424,7 @@ terraform {
 
 ---
 
-Em poucos minutos, você provisionou uma infraestrutura completa na Magalu Cloud usando OpenTofu, incluindo:
+Com essa configuração você provisiona na Magalu Cloud usando OpenTofu:
 
 1. Múltiplas VMs com diferentes sistemas operacionais e configurações
 2. Volumes de armazenamento de bloco
@@ -432,7 +432,7 @@ Em poucos minutos, você provisionou uma infraestrutura completa na Magalu Cloud
 4. Cluster Kubernetes com múltiplos node pools
 5. Bancos de dados gerenciados MySQL e PostgreSQL
 
-Tudo isso consumindo a variável `MAGALU_API_KEY` do ambiente para autenticação segura.
+Tudo isso consumindo a variável `TF_VAR_mgc_api_key` do ambiente para autenticação.
 
 ## Próximos passos
 

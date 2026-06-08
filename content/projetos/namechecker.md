@@ -9,13 +9,13 @@ categories: ["projetos"]
 
 ## NameChecker - Project Name Availability Tool
 
-Precisa encontrar um nome para seu novo projeto? O NameChecker é uma ferramenta web que permite verificar instantaneamente a disponibilidade de um nome em mais de 30 plataformas tecnológicas, redes sociais e extensões de domínio. Criada para desenvolvedores e empreendedores, esta ferramenta economiza tempo ao validar rapidamente se o nome do seu projeto está disponível em todos os lugares importantes.
+O NameChecker é uma ferramenta web que verifica a disponibilidade de um nome em mais de 30 plataformas tecnológicas, redes sociais e extensões de domínio, numa única busca. Em vez de checar GitHub, NPM, PyPI e domínios um a um, você consulta tudo de uma vez.
 
 > 🔗 **Acesse agora:** [https://namechecker.leandrosf.com](https://namechecker.leandrosf.com)
 
 ## Por que criei este projeto?
 
-Como desenvolvedor, sei que encontrar um nome adequado para um projeto é mais difícil do que parece. Muitas vezes, um nome pode estar disponível no GitHub mas já ter sido registrado como domínio, ou estar livre no NPM mas já existir no PyPI. Cansei de verificar manualmente cada plataforma e decidi automatizar esse processo criando uma ferramenta unificada que verifica tudo de uma vez.
+Encontrar um nome livre para um projeto é mais difícil do que parece. Um nome pode estar disponível no GitHub mas já registrado como domínio, ou livre no NPM mas existente no PyPI. Cansei de verificar cada plataforma manualmente e automatizei o processo numa ferramenta única.
 
 ## O que você pode fazer com o NameChecker
 
@@ -30,15 +30,15 @@ Como desenvolvedor, sei que encontrar um nome adequado para um projeto é mais d
 
 O NameChecker é estruturado da seguinte forma:
 
-- **Backend em Go**: Um servidor web em Go (Golang) leve e de alta performance
-- **API RESTful**: Cada verificador é exposto como um endpoint API separado
-- **Cache com Redis**: Sistema de cache opcional para melhorar performance e reduzir requisições
-- **Interface moderna**: Frontend responsivo e intuitivo construído com HTML, CSS e JavaScript
+- **Backend em Go**: Servidor web em Go (Golang)
+- **API RESTful**: Cada verificador é exposto como um endpoint separado
+- **Cache com Redis**: Cache opcional para reduzir requisições às plataformas
+- **Interface web**: Frontend responsivo em HTML, CSS e JavaScript
 - **Verificações em tempo real**: As verificações são realizadas assincronamente à medida que o usuário digita
 
 ## Tecnologias escolhidas
 
-- **Go (Golang)**: Escolhido pela sua eficiência, performance e facilidade de deployment
+- **Go (Golang)**: Binário único, sem runtime externo no deploy
 - **Redis**: Para caching avançado (opcional)
 - **HTML/CSS/JavaScript**: Para interface do usuário limpa e responsiva
 - **Docker**: Para deployment simplificado e escalabilidade

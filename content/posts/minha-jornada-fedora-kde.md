@@ -41,7 +41,7 @@ O suporte nativo ao Wayland também está funcionando muito bem. Não tenho prob
 
 ## A combinação que funciona
 
-Fedora + KDE Plasma não é só a soma de duas tecnologias boas, é uma combinação que se complementa bem. O Fedora fornece a base sólida, moderna e confiável. O KDE Plasma oferece a interface flexível e produtiva que eu preciso. Juntos, criam um ambiente que é ao mesmo tempo poderoso e agradável de usar.
+Fedora + KDE Plasma se complementam bem. O Fedora dá a base estável e atualizada, e o KDE entrega a interface flexível que eu preciso. Juntos, formam um ambiente produtivo e agradável de usar.
 
 Pra ser sincero, o Fedora é a melhor distro com KDE que já usei. Já testei KDE em outras distros, mas a integração no Fedora é outra coisa. Tudo funciona de forma mais polida, mais estável. É como se tivessem sido feitos um pro outro.
 
@@ -58,9 +58,9 @@ Se você está considerando experimentar Fedora com KDE, aqui vão algumas dicas
 
 ## Conclusão
 
-Voltar pro Fedora com KDE Plasma há um ano foi uma das melhores decisões que tomei. Não é só nostalgia, é a confirmação de que essa combinação realmente funciona pra mim. A experiência melhorou muito desde que usei anos atrás, e comparado ao Mac, encontro aqui a liberdade e flexibilidade que preciso pra ser produtivo.
+Voltar pro Fedora com KDE Plasma há um ano foi uma das melhores decisões que tomei. A combinação funciona pra mim de verdade, não é questão de nostalgia. A experiência melhorou muito desde que usei anos atrás, e comparado ao Mac, encontro aqui a liberdade e flexibilidade que preciso pra ser produtivo.
 
-Fedora + KDE Plasma se tornou mais que uma escolha técnica, é uma escolha que reflete meus valores de open source, liberdade e produtividade. E dessa vez, pretendo ficar.
+No fim, Fedora + KDE Plasma é a stack que combina com o que eu valorizo: open source, liberdade pra customizar e produtividade. E dessa vez pretendo ficar.
 
 Se você está considerando fazer uma mudança similar, ou se já passou por uma jornada parecida, espero que esse post tenha sido útil. E se já usa Fedora + KDE, compartilha aí suas experiências também!
 

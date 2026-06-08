@@ -9,13 +9,13 @@ categories: ["projetos"]
 
 ## HNPES - Hacker News Previous Entry Search
 
-Já se perguntou se aquela página que você está visitando já foi compartilhada no Hacker News? O HNPES é uma extensão para Chrome que automatiza exatamente isso! Com apenas um clique, veja rapidamente se a URL atual já apareceu no Hacker News, incluindo informações como comentários, pontuação e autor da postagem.
+O HNPES é uma extensão para Chrome que verifica se a URL da aba atual já foi submetida ao Hacker News. Com um clique, mostra as submissões encontradas com pontuação, autor, número de comentários e data.
 
 > ⚠️ **Aviso**: Esta extensão está atualmente aguardando aprovação na Chrome Web Store. Atualizaremos este aviso com o link da loja assim que for aprovada.
 
 ## Por que criei este projeto?
 
-Durante os últimos 10 anos, como usuário frequente do Hacker News, utilizei um bookmarklet simples para checar se uma página já havia sido compartilhada. Decidi transformar essa tarefa em algo mais prático e acessível criando uma extensão completa, amigável e com muitos recursos adicionais.
+Durante os últimos 10 anos, como usuário frequente do Hacker News, utilizei um bookmarklet simples para checar se uma página já havia sido compartilhada. Decidi transformar isso numa extensão, com mais recursos que o bookmarklet original.
 
 ## O que você pode fazer com o HNPES
 
@@ -36,8 +36,8 @@ O HNPES é estruturado da seguinte forma:
 
 ## Tecnologias escolhidas
 
-- **JavaScript puro**: Leve, rápido e sem dependências adicionais.
-- **Chrome Extension API (Manifest V3)**: Interface moderna, segura e em conformidade com as últimas práticas recomendadas.
+- **JavaScript puro**: Sem dependências externas.
+- **Chrome Extension API (Manifest V3)**: Versão atual da API de extensões do Chrome.
 - **HTML/CSS**: Interface responsiva, com suporte a tema claro e escuro.
 
 ## Estrutura do projeto
