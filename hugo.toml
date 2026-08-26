@@ -14,7 +14,7 @@ homeInfoParams = { Title = "Bem-vindo ao meu site", Content = "Meu site pessoal 
 [params.profileMode]
 enabled = true
 title = "Leandro Ferreira"
-subtitle = "Especialista SRE/DevOps | Desenvolvedor | Cloud"
+subtitle = "Especialista em Engenharia de Plataforma | Multi-Cloud | Desenvolvedor"
 imageUrl = "/pic.jpeg"
 imageWidth = 300
 imageHeight = 300

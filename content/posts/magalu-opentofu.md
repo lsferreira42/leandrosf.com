@@ -325,11 +325,11 @@ output "vm_basica_info" {
   }
 }
 
-output "vm_windows_info" {
-  description = "Informações da VM Windows"
+output "vm_userdata_info" {
+  description = "Informações da VM com user data"
   value = {
-    id = mgc_virtual_machine_instances.vm_windows.id
-    ip = mgc_virtual_machine_instances.vm_windows.network.public_address
+    id = mgc_virtual_machine_instances.vm_com_userdata.id
+    ip = mgc_virtual_machine_instances.vm_com_userdata.network.public_address
   }
 }
 

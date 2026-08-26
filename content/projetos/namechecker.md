@@ -9,58 +9,24 @@ categories: ["projetos"]
 
 ## NameChecker - Project Name Availability Tool
 
-O NameChecker é uma ferramenta web que verifica a disponibilidade de um nome em mais de 30 plataformas tecnológicas, redes sociais e extensões de domínio, numa única busca. Em vez de checar GitHub, NPM, PyPI e domínios um a um, você consulta tudo de uma vez.
+O NameChecker verifica a disponibilidade de um nome em mais de 30 plataformas técnicas, redes sociais e extensões de domínio numa busca só. Em vez de checar GitHub, NPM, PyPI e domínios um a um, você consulta tudo de uma vez.
 
-> 🔗 **Acesse agora:** [https://namechecker.leandrosf.com](https://namechecker.leandrosf.com)
+Acesse em [namechecker.leandrosf.com](https://namechecker.leandrosf.com).
 
-## Por que criei este projeto?
-
-Encontrar um nome livre para um projeto é mais difícil do que parece. Um nome pode estar disponível no GitHub mas já registrado como domínio, ou livre no NPM mas existente no PyPI. Cansei de verificar cada plataforma manualmente e automatizei o processo numa ferramenta única.
-
-## O que você pode fazer com o NameChecker
-
-- **Verificar simultaneamente**: Analise a disponibilidade em mais de 30 plataformas com um único clique
-- **Verificar plataformas tecnológicas**: GitHub, NPM, PyPI, Maven, Rust Crate, Go, Ruby Gem, e muitas outras
-- **Verificar redes sociais**: Bluesky, Twitter/X, Facebook, LinkedIn, Instagram, Reddit, TikTok, e mais
-- **Verificar domínios**: Confira a disponibilidade em múltiplas extensões (.com, .net, .org, .io, .dev, etc.)
-- **Baixar resultados**: Exporte os resultados como CSV para análise posterior
-- **Usar API**: Acesse cada verificador individualmente através de endpoints da API
+Achar um nome livre pra um projeto é mais chato do que parece: pode estar disponível no GitHub e já registrado como domínio, ou livre no NPM e ocupado no PyPI. Cansei de checar plataforma por plataforma e automatizei isso.
 
 ## Como funciona por dentro
 
-O NameChecker é estruturado da seguinte forma:
+Backend em Go, com cada verificador exposto como endpoint separado numa API RESTful. Cache opcional em Redis reduz as requisições às plataformas. As checagens rodam de forma assíncrona conforme você digita, e o frontend organiza os resultados em três categorias: Tech, Social e Domains, com exportação em CSV.
 
-- **Backend em Go**: Servidor web em Go (Golang)
-- **API RESTful**: Cada verificador é exposto como um endpoint separado
-- **Cache com Redis**: Cache opcional para reduzir requisições às plataformas
-- **Interface web**: Frontend responsivo em HTML, CSS e JavaScript
-- **Verificações em tempo real**: As verificações são realizadas assincronamente à medida que o usuário digita
+Go pelo binário único sem runtime externo no deploy, Redis pro cache, e Docker pro empacotamento.
 
-## Tecnologias escolhidas
+## Uso
 
-- **Go (Golang)**: Binário único, sem runtime externo no deploy
-- **Redis**: Para caching avançado (opcional)
-- **HTML/CSS/JavaScript**: Para interface do usuário limpa e responsiva
-- **Docker**: Para deployment simplificado e escalabilidade
-
-## Como usar
-
-1. Acesse [https://namechecker.leandrosf.com](https://namechecker.leandrosf.com)
-2. Digite o nome que deseja verificar no campo de busca
-3. Clique no botão "Go" ou pressione Enter
-4. Aguarde enquanto as verificações são realizadas em tempo real
-5. Analise os resultados exibidos nas três categorias: Tech, Social e Domains
-6. Opcionalmente, faça o download dos resultados em formato CSV
+Digite o nome no campo de busca e aperta Enter (ou clica em "Go"). Os resultados aparecem em tempo real, separados por categoria, com opção de baixar em CSV.
 
 ## Planos futuros
 
-Estou constantemente melhorando o NameChecker e planejando novas funcionalidades, como:
+Mais plataformas e redes sociais, verificação de marca registrada, sugestão de nomes alternativos quando o desejado está ocupado, e alerta quando um nome ficar disponível.
 
-- Adicionar mais plataformas e redes sociais
-- Implementar verificação de marcas registradas
-- Oferecer sugestões de nomes alternativos quando o desejado não estiver disponível
-- Criar um sistema de alertas para notificar quando um nome desejado se tornar disponível
-
-## Quer saber mais?
-
-- [Acesse o NameChecker](https://namechecker.leandrosf.com)
+Código e acesso: [namechecker.leandrosf.com](https://namechecker.leandrosf.com)

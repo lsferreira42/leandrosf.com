@@ -8,11 +8,11 @@ draft = false
 
 ## Quem sou eu
 
-Olá, sou Leandro Ferreira, especialista SRE/DevOps e desenvolvedor de software com mais de 15 anos de experiência em infraestrutura, automação e desenvolvimento. Atualmente trabalho na Magalu Cloud onde foco no time de IAAS provendo e cuidando de infraestrutura para os desenvolvedores e outras equipes.
+Olá, sou Leandro Ferreira, especialista em engenharia de plataforma e desenvolvedor de software com mais de 15 anos de experiência em infraestrutura, automação e desenvolvimento. Atualmente trabalho na Digibee, tirando a plataforma de rodar numa nuvem só e fazendo ela operar como PaaS multi-cloud.
 
 ## Minha jornada
 
-Minha jornada profissional foi construída na interseção entre desenvolvimento e infraestrutura, sempre com foco em criar soluções escaláveis e eficientes. Comecei minha carreira em infraestrutura tradicional e evolui para ambientes cloud, automação e DevOps, trabalhando em empresas como GetNinjas, Totvs, Locaweb, GoCache CDN e UolHost.
+Minha jornada profissional foi construída na interseção entre desenvolvimento e infraestrutura, sempre com foco em criar soluções escaláveis e eficientes. Comecei minha carreira em infraestrutura tradicional e evolui para ambientes cloud, automação e DevOps, trabalhando em empresas como GetNinjas, Totvs, Locaweb, GoCache CDN, UolHost e Magalu Cloud.
 
 Ao longo dos anos, desenvolvi uma paixão por resolver problemas complexos de infraestrutura e arquitetura, aplicando práticas de IaC (Infraestrutura como Código), observabilidade e FinOps para otimizar recursos e melhorar a performance de sistemas distribuídos.
 
@@ -20,7 +20,7 @@ Ao longo dos anos, desenvolvi uma paixão por resolver problemas complexos de in
 
 Meu trabalho envolve principalmente:
 
-- **Arquitetura Cloud**: Desenho e implementação de arquiteturas em AWS e GCP
+- **Arquitetura Multi-Cloud**: Desenho e implementação de arquiteturas em AWS, GCP e outros provedores, incluindo migração de plataformas single-cloud para multi-cloud
 - **Kubernetes**: Gerenciamento e implantação de clusters e recursos
 - **Infraestrutura como Código**: Terraform, Ansible, Puppet
 - **Observabilidade**: Implementação de monitoramento com Prometheus, Grafana e Elastic Stack

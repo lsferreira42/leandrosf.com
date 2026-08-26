@@ -269,19 +269,7 @@ Este tutorial cobriu apenas o básico do OpenTofu. A ferramenta suporta todos os
 - Backends remotos para colaboração em equipe
 - Importação de recursos existentes
 
-## Dúvidas frequentes
-
-**P: Preciso migrar meus arquivos de estado?**  
-R: Não! O OpenTofu usa o mesmo formato de arquivo de estado do Terraform.
-
-**P: Os módulos do Terraform Registry funcionam?**  
-R: Sim, todos os módulos e provedores do ecossistema Terraform são compatíveis.
-
-**P: O OpenTofu tem suporte comercial?**  
-R: Sim, várias empresas como Spacelift e Gruntwork oferecem suporte para OpenTofu.
-
-**P: É seguro usar em produção?**  
-R: Sim. Várias empresas já migraram cargas de trabalho de produção para o OpenTofu.
+O OpenTofu usa o mesmo formato de state do Terraform, então não tem migração pra fazer, e os módulos e provedores do Terraform Registry funcionam sem alteração.
 
 ## Recursos
 
