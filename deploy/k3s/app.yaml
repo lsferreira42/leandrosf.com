@@ -1,0 +1,66 @@
+# www.leandrosf.com in k3s: nginx serving the Hugo build baked into the image.
+#
+# Nothing is mounted from the host, so the pod may run on either node. It
+# prefers alcserver000 because the edge nginx and the registry are there; on
+# alcserver002 every request would cross the VPN twice.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: website}
+  template:
+    metadata:
+      labels: {app: website}
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - {key: local, operator: In, values: [nuvem]}
+      containers:
+        - name: website
+          image: leandrosf-website
+          ports:
+            - containerPort: 9034
+          # The nginx:alpine master runs as root and drops to the nginx user for
+          # the workers, and it writes to /var/cache/nginx, so neither runAsUser
+          # nor a read-only root fits this image as it is.
+          securityContext:
+            allowPrivilegeEscalation: false
+          readinessProbe:
+            httpGet: {path: /, port: 9034}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 10m, memory: 16Mi}
+            limits: {memory: 128Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website
+spec:
+  selector: {app: website}
+  ports:
+    - port: 9034
+---
+# Only www: the edge vhost answers leandrosf.com itself with a redirect, so the
+# bare domain never reaches the ingress.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: website
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.leandrosf.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: {name: website, port: {number: 9034}}

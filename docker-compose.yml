@@ -1,3 +1,12 @@
+# The way back if k3s breaks: the site normally runs in k3s (deploy/k3s/) and
+# this stays stopped in /root/leandrosf.com on alcserver000.
+# /root/compose-emergencia/leandrosf.sh starts it and puts back the vhost
+# that points at leandrosfcom-website-1:9034 (website.conf.compose in the
+# alicercelabs repo).
+#
+# The image copies public/, which is not in git: deploy/k3s/deploy.sh builds
+# it with Hugo on the server before every k3s deploy, so it is the same site
+# the pod was serving.
 version: '3'
 
 services:
