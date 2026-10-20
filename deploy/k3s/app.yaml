@@ -14,6 +14,9 @@ spec:
   template:
     metadata:
       labels: {app: website}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9113"
     spec:
       affinity:
         nodeAffinity:
@@ -38,6 +41,25 @@ spec:
           resources:
             requests: {cpu: 10m, memory: 16Mi}
             limits: {memory: 128Mi}
+        # Reads stub_status over loopback (the server on 127.0.0.1:8081 in
+        # nginx.conf) and turns it into Prometheus metrics on 9113. Unlike the
+        # nginx container, this one runs fine as non-root on a read-only root.
+        - name: exporter
+          image: nginx/nginx-prometheus-exporter:1.5.3
+          args:
+            - --nginx.scrape-uri=http://127.0.0.1:8081/stub_status
+          ports:
+            - {name: metricas, containerPort: 9113}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: 5m, memory: 16Mi}
+            limits: {memory: 32Mi}
 ---
 apiVersion: v1
 kind: Service
