@@ -1,6 +1,19 @@
 {{- /* Head custom content area start */ -}}
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 <link rel="stylesheet" href="/css/custom.css">
+{{- /* CSS e JS próprios de uma página: arquivos da pasta dela, listados em
+       `estilos` e `scripts` no front matter. */ -}}
+{{- range .Params.estilos }}
+{{- with $.Resources.GetMatch . }}{{ $r := . | fingerprint }}
+<link rel="stylesheet" href="{{ $r.RelPermalink }}" integrity="{{ $r.Data.Integrity }}">
+{{- end }}
+{{- end }}
+{{- range .Params.scripts }}
+{{- with $.Resources.GetMatch . }}{{ $r := . | fingerprint }}
+<script defer src="{{ $r.RelPermalink }}" integrity="{{ $r.Data.Integrity }}"></script>
+{{- end }}
+{{- end }}
+{{- if hugo.IsProduction }}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-86S8EQM4WC"></script>
 <script>
@@ -10,4 +23,5 @@
 
   gtag('config', 'G-86S8EQM4WC');
 </script>
+{{- end }}
 {{- /* Head custom content area end */ -}} 

@@ -1,14 +1,18 @@
 baseURL = "https://www.leandrosf.com"
 title = "Leandro Ferreira"
 theme = "PaperMod"
+defaultContentLanguage = "pt"
 languageCode = "pt-br"
 
 [params]
+description = "Site pessoal de Leandro Ferreira: engenharia de plataforma, Linux, Kubernetes, projetos open source e os livros que eu li."
+author = "Leandro Ferreira"
+images = ["/pic.jpeg"]
+DateFormat = "2 de January de 2006"
 ShowReadingTime = true
+ShowToc = true
 ShowBreadCrumbs = true
-comments = true
 ShowCodeCopyButtons = true
-homeInfoParams = { Title = "Bem-vindo ao meu site", Content = "Meu site pessoal onde compartilho projetos, ideias e conhecimentos." }
 
 # Profile Mode
 [params.profileMode]
@@ -32,6 +36,10 @@ url = "/projetos/"
 [[params.profileMode.buttons]]
 name = "Blog"
 url = "/posts/"
+
+[[params.profileMode.buttons]]
+name = "Livros"
+url = "/livros/"
 
 # Social Icons
 [[params.socialIcons]]
@@ -75,10 +83,16 @@ url = "/posts/"
 weight = 3
 
 [[menu.main]]
+identifier = "livros"
+name = "Livros"
+url = "/livros/"
+weight = 4
+
+[[menu.main]]
 identifier = "rss"
 name = "RSS"
 url = "/index.xml"
-weight = 4
+weight = 5
 
 [taxonomies]
 tag = "tags"
@@ -88,3 +102,6 @@ category = "categories"
 
   [markup.highlight]
   style = "monokai"
+
+[imaging]
+quality = 82
