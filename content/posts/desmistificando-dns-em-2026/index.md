@@ -97,7 +97,7 @@ O que acontece quando você pede `www.leandrosf.com` e ninguém tem nada em cach
 
 Marque "cache quente" e toque de novo. É assim que a maioria das consultas termina: uma ida e uma volta, sem raiz e sem TLD.
 
-O `dig +trace` faz o mesmo caminho na sua máquina, bancando o recursivo. Esta é a saída de hoje, só com os primeiros servidores de cada nível:
+O `dig +trace` faz o mesmo caminho na sua máquina, bancando o recursivo. Esta é a saída, só com os primeiros servidores de cada nível:
 
 ```text
 $ dig +trace +nodnssec www.leandrosf.com
@@ -211,7 +211,7 @@ Consulte duas vezes seguidas e repare no TTL: ele desce, porque a resposta está
 
 ### SOA
 
-Toda zona tem exatamente um SOA, na raiz dela. O do `.com` hoje:
+Toda zona tem exatamente um SOA, na raiz dela. O do `.com`:
 
 ```text
 $ dig com. soa +multi
@@ -718,7 +718,7 @@ Qualquer um pode usar um recursivo público no lugar do que o provedor entrega. 
 
 Todos os da tabela validam DNSSEC. O teste foi consultar `dnssec-failed.org` em cada um e ver se voltava SERVFAIL. Isso inclui o `9.9.9.10` do Quad9, que muita gente descreve como "sem DNSSEC". O que ele não tem é o bloqueio de malware. Quem não valida, pelo mesmo teste, são o AliDNS (`223.5.5.5`), os antigos `4.2.2.x` da Lumen e o filtro de segurança do CleanBrowsing.
 
-No uso real a concentração é grande. Pela medição da APNIC de 15 de novembro, o Google resolve pra cerca de 12% dos usuários do mundo e a Cloudflare pra 4%. No Brasil o Google chega a 24% e a Cloudflare a 7%. Não achei nenhum resolvedor público brasileiro relevante: o NIC.br opera os autoritativos do `.br` e hospeda cópias de servidores raiz, mas não um recursivo aberto.
+No uso real a concentração é grande. Pela medição da APNIC de novembro de 2026, o Google resolve pra cerca de 12% dos usuários do mundo e a Cloudflare pra 4%. No Brasil o Google chega a 24% e a Cloudflare a 7%. Não achei nenhum resolvedor público brasileiro relevante: o NIC.br opera os autoritativos do `.br` e hospeda cópias de servidores raiz, mas não um recursivo aberto.
 
 Dois casos recentes lembram que resolvedor gratuito acaba. O dns0.eu, criado em 2023 pelos fundadores do NextDNS, encerrou em outubro de 2025 dizendo que não era sustentável. Depois o domínio foi a leilão e hoje pertence a outra pessoa, então quem deixou `dns0.eu` configurado como DoH ou DoT em algum aparelho está apontando pra um nome com outro dono. E a Mullvad anunciou o fim do DNS público cifrado dela pra 2 de novembro de 2026, passando a patrocinar o Quad9.
 
