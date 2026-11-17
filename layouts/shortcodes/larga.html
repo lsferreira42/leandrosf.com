@@ -1,0 +1,5 @@
+{{- /* Tabela larga: rola pro lado no celular em vez de estourar a coluna.
+       Uso: {{< larga >}} tabela em Markdown {{< /larga >}} */ -}}
+<div class="tabela-larga">
+{{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>

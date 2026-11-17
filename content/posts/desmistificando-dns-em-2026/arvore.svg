@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 790 330" role="img" aria-label="Árvore de nomes do DNS, da raiz até www.leandrosf.com">
+<rect class="azul" x="330" y="14" width="60" height="36" rx="8"/><text x="360.0" y="30" text-anchor="middle" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.</text><text class="fraco" x="360.0" y="46.0" text-anchor="middle" font-size="10.5">raiz</text>
+<path class="linha" d="M360,50 L90,104" />
+<rect class="caixa" x="52" y="104" width="76" height="34" rx="8"/><text x="90.0" y="125.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">br</text>
+<path class="linha" d="M360,50 L250,104" />
+<rect class="azul" x="212" y="104" width="76" height="34" rx="8"/><text x="250.0" y="125.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">com</text>
+<path class="linha" d="M360,50 L410,104" />
+<rect class="caixa" x="372" y="104" width="76" height="34" rx="8"/><text x="410.0" y="125.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">org</text>
+<path class="linha" d="M360,50 L540,104" />
+<rect class="caixa" x="502" y="104" width="76" height="34" rx="8"/><text x="540.0" y="125.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">net</text>
+<path class="linha" d="M360,50 L650,104" />
+<rect class="caixa" x="612" y="104" width="76" height="34" rx="8"/><text x="650.0" y="125.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">arpa</text>
+<path class="linha" d="M90,138 L40,196" />
+<rect class="caixa" x="-8" y="196" width="96" height="34" rx="8"/><text x="40.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">com.br</text>
+<path class="linha" d="M90,138 L140,196" />
+<rect class="caixa" x="92" y="196" width="96" height="34" rx="8"/><text x="140.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">gov.br</text>
+<path class="linha" d="M250,138 L250,196" />
+<rect class="azul" x="202" y="196" width="96" height="34" rx="8"/><text x="250.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">leandrosf</text>
+<path class="linha" d="M250,138 L360,196" />
+<rect class="caixa" x="312" y="196" width="96" height="34" rx="8"/><text x="360.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">cloudflare</text>
+<path class="linha" d="M410,138 L470,196" />
+<rect class="caixa" x="422" y="196" width="96" height="34" rx="8"/><text x="470.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">wikipedia</text>
+<path class="linha" d="M650,138 L650,196" />
+<rect class="caixa" x="602" y="196" width="96" height="34" rx="8"/><text x="650.0" y="217.5" text-anchor="middle" font-size="12.5" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">in-addr</text>
+<path class="linha" d="M250,230 L250,276" />
+<rect class="azul" x="214" y="276" width="72" height="34" rx="8"/><text x="250.0" y="297.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">www</text>
+<path class="linha" d="M40,230 L40,276" />
+<rect class="caixa" x="8" y="276" width="64" height="34" rx="8"/><text x="40.0" y="297.68" text-anchor="middle" font-size="13" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">uol</text>
+<text class="fraco" x="768" y="36" text-anchor="end" font-size="11">raiz</text>
+<text class="fraco" x="768" y="125" text-anchor="end" font-size="11">TLD</text>
+<text class="fraco" x="768" y="217" text-anchor="end" font-size="11">2º nível</text>
+<text class="fraco" x="768" y="297" text-anchor="end" font-size="11">3º nível</text>
+</svg>

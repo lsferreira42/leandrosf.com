@@ -1,0 +1,6 @@
+{{- /* Exemplo interativo do post de DNS. O JavaScript (dns.js, recurso da
+       página) preenche a caixa a partir de data-lab. */ -}}
+<figure class="dnslab" data-lab="{{ .Get "lab" }}"{{ with .Get "nome" }} data-nome="{{ . }}"{{ end }}{{ with .Get "tipo" }} data-tipo="{{ . }}"{{ end }}>
+  <figcaption class="dnslab-titulo">{{ .Get "titulo" }}</figcaption>
+  <div class="dnslab-corpo"><p class="dnslab-nota">Este exemplo é interativo e precisa de JavaScript ligado.</p></div>
+</figure>

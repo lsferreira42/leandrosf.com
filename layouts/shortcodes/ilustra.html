@@ -1,0 +1,12 @@
+{{- /* Ilustração da pasta do post, redimensionada. Uso:
+       {{< ilustra src="arquivo.webp" alt="descrição" caption="legenda" >}} */ -}}
+{{- with .Page.Resources.GetMatch (.Get "src") }}
+{{- $um := .Resize "620x webp" }}
+{{- $dois := .Resize "1240x webp" }}
+<figure class="ilustra">
+  <img src="{{ $um.RelPermalink }}" srcset="{{ $um.RelPermalink }} 1x, {{ $dois.RelPermalink }} 2x" width="{{ $um.Width }}" height="{{ $um.Height }}" alt="{{ $.Get "alt" }}" loading="lazy" decoding="async">
+  {{- with $.Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{- else }}
+{{- errorf "ilustra: não achei %q em %s" (.Get "src") .Page.File.Path }}
+{{- end }}

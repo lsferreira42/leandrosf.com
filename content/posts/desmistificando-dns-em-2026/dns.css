@@ -1,0 +1,580 @@
+/* Exemplos interativos e diagramas do post de DNS. As cores do tema vêm das
+   variáveis do PaperMod; as de destaque são daqui. */
+.post-content {
+  --dns-azul: #2563eb;
+  --dns-verde: #15803d;
+  --dns-laranja: #b45309;
+  --dns-vermelho: #b91c1c;
+  --dns-roxo: #6d28d9;
+  --dns-rosa: #be185d;
+}
+
+.dark .post-content {
+  --dns-azul: #7aa7ff;
+  --dns-verde: #5fd08a;
+  --dns-laranja: #f2b05a;
+  --dns-vermelho: #ff8585;
+  --dns-roxo: #b79cff;
+  --dns-rosa: #ff8fc0;
+}
+
+.dnslab {
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--entry);
+  overflow: hidden;
+}
+
+.dnslab-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background: var(--code-bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  text-align: left;
+}
+
+.dnslab-titulo::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dns-verde);
+}
+
+.dnslab-corpo {
+  padding: 16px;
+}
+
+.dnslab-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.dnslab-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 150px;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.dnslab-campo:has(select),
+.dnslab-campo:has(input[type="number"]) {
+  flex: 0 1 auto;
+}
+
+.dnslab input[type="text"],
+.dnslab input[type="number"],
+.dnslab select {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--theme);
+  color: var(--primary);
+  font: 13.4px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab input[type="number"] {
+  width: 5.5em;
+}
+
+.dnslab input:focus-visible,
+.dnslab select:focus-visible,
+.dnslab button:focus-visible,
+.dnslab-bytes:focus-visible {
+  outline: 2px solid var(--dns-azul);
+  outline-offset: 1px;
+}
+
+.dnslab button {
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: var(--primary);
+  color: var(--theme);
+  font-size: 13.4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dnslab button:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.dnslab button.dnslab-link {
+  padding: 0;
+  margin-right: 10px;
+  background: none;
+  color: var(--dns-azul);
+  font: inherit;
+  text-decoration: underline;
+}
+
+.dnslab-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 7px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.dnslab-exemplos {
+  margin: -4px 0 12px;
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+.post-content .dnslab p.dnslab-nota,
+.post-content .dnslab li.dnslab-nota {
+  margin: 10px 0 0 !important;
+  font-size: 13px !important;
+  line-height: 1.55;
+  color: var(--secondary);
+  list-style: none;
+}
+
+.post-content .dnslab .dnslab-erro {
+  margin: 8px 0 0 !important;
+  padding: 8px 12px;
+  border-left: 3px solid var(--dns-vermelho);
+  background: var(--code-bg);
+  font-size: 13px !important;
+  list-style: none;
+}
+
+/* anatomia do nome */
+.dnslab-rotulos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.dnslab-rotulo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-bottom: 3px solid var(--secondary);
+  background: var(--theme);
+}
+
+.dnslab-rotulo code {
+  padding: 0;
+  background: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dnslab-rotulo small {
+  font-size: 11px;
+  color: var(--secondary);
+}
+
+.dnslab-rotulo.nivel-0 { border-bottom-color: var(--dns-vermelho); }
+.dnslab-rotulo.nivel-1 { border-bottom-color: var(--dns-laranja); }
+.dnslab-rotulo.nivel-2 { border-bottom-color: var(--dns-azul); }
+.dnslab-rotulo.nivel-3 { border-bottom-color: var(--dns-verde); }
+.dnslab-rotulo.nivel-4 { border-bottom-color: var(--dns-roxo); }
+
+.dnslab-ponto {
+  align-self: center;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+/* pacote no fio */
+.dnslab-hex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 12px 0;
+  font: 13px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab-bytes {
+  display: inline-flex;
+  gap: 5px;
+  padding: 6px 7px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  border-bottom: 3px solid var(--cor);
+  background: var(--theme);
+  cursor: help;
+}
+
+.dnslab-bytes.ativo {
+  border-color: var(--cor);
+  background: var(--code-bg);
+}
+
+.cor-id { --cor: var(--dns-roxo); }
+.cor-flags { --cor: var(--dns-vermelho); }
+.cor-cont { --cor: var(--secondary); }
+.cor-len { --cor: var(--dns-laranja); }
+.cor-nome { --cor: var(--dns-azul); }
+.cor-tipo { --cor: var(--dns-verde); }
+.cor-opt { --cor: var(--dns-rosa); }
+
+.dnslab-explica {
+  min-height: 4.8em;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* saída estilo dig */
+.dnslab-term {
+  font: 12.6px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab-cab {
+  padding: 8px 12px;
+  border-radius: 6px 6px 0 0;
+  background: var(--code-bg);
+}
+
+.dnslab-cab .ok { color: var(--dns-verde); }
+.dnslab-cab .ruim { color: var(--dns-vermelho); }
+
+.dnslab-secao {
+  padding: 6px 12px 0;
+  color: var(--secondary);
+}
+
+.dnslab-rr {
+  display: grid;
+  grid-template-columns: minmax(8em, 14em) 5em 5em 1fr;
+  gap: 0 10px;
+  padding: 1px 12px;
+  font: 12.6px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab-rr .rr-ttl { color: var(--dns-laranja); text-align: right; }
+.dnslab-rr .rr-tipo { color: var(--dns-azul); }
+.dnslab-rr .rr-dado,
+.dnslab-rr .rr-nome { overflow-wrap: anywhere; }
+
+/* trace */
+.post-content ol.dnslab-passos {
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+}
+
+.dnslab-passo {
+  position: relative;
+  margin: 0 0 0 10px !important;
+  padding: 2px 0 14px 22px;
+  border-left: 2px solid var(--border);
+  font-size: 13.4px !important;
+  line-height: 1.55;
+}
+
+.dnslab-passo::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--secondary);
+  border: 2px solid var(--entry);
+}
+
+.dnslab-passo.corte::before { background: var(--dns-azul); }
+.dnslab-passo.final::before { background: var(--dns-verde); }
+.dnslab-passo.falha::before { background: var(--dns-vermelho); }
+
+.dnslab-passo strong {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab-passo .dnslab-rr {
+  padding-left: 0;
+}
+
+/* cadeia DNSSEC */
+.dnslab-elo {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--secondary);
+  border-radius: 6px;
+  background: var(--theme);
+}
+
+.dnslab-elo.ok { border-left-color: var(--dns-verde); }
+.dnslab-elo.aviso { border-left-color: var(--dns-laranja); }
+.dnslab-elo.falha { border-left-color: var(--dns-vermelho); }
+
+.post-content .dnslab-elo p {
+  margin: 4px 0 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5;
+}
+
+.post-content .dnslab-elo p.elo-chaves {
+  color: var(--secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px !important;
+}
+
+.dnslab-seta {
+  padding: 2px 0 2px 16px;
+  color: var(--secondary);
+  line-height: 1.2;
+}
+
+.post-content .dnslab p.dnslab-veredito {
+  margin: 12px 0 0 !important;
+  padding: 9px 12px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 13.4px !important;
+  font-weight: 500;
+}
+
+.dnslab-veredito.ok { color: var(--dns-verde); }
+.dnslab-veredito.aviso { color: var(--dns-laranja); }
+.dnslab-veredito.falha { color: var(--dns-vermelho); }
+
+/* simulação de TTL */
+.dnslab-relogio {
+  margin-bottom: 10px;
+  font-size: 13.4px;
+  font-weight: 500;
+}
+
+.dnslab-caches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 6px 18px;
+}
+
+.dnslab-cache {
+  display: grid;
+  grid-template-columns: 7.4em 1fr 8.4em;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.cache-nome {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--secondary);
+}
+
+.cache-barra {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--code-bg);
+  overflow: hidden;
+}
+
+.cache-barra i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--secondary);
+}
+
+.cache-ip {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  text-align: right;
+}
+
+.dnslab-cache.novo .cache-barra i { background: var(--dns-verde); }
+.dnslab-cache.novo .cache-ip { color: var(--dns-verde); font-weight: 600; }
+
+/* animação da resolução */
+.dnslab-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+}
+
+.dnslab-svg .aresta {
+  stroke: var(--border);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.dnslab-svg .aresta.ativa {
+  stroke: var(--dns-azul);
+  stroke-dasharray: none;
+}
+
+.dnslab-svg .no rect {
+  fill: var(--theme);
+  stroke: var(--secondary);
+  stroke-width: 1.5;
+}
+
+.dnslab-svg .no.ativo rect {
+  stroke: var(--dns-azul);
+  stroke-width: 2.5;
+}
+
+.dnslab-svg text {
+  text-anchor: middle;
+  fill: var(--primary);
+  font-family: inherit;
+}
+
+.dnslab-svg .no-titulo { font-size: 14px; font-weight: 600; }
+.dnslab-svg .no-sub { font-size: 10.5px; fill: var(--secondary); }
+
+.dnslab-svg .pacote rect { fill: var(--dns-azul); }
+.dnslab-svg .pacote.volta rect { fill: var(--dns-verde); }
+
+.dnslab-svg .pacote text {
+  fill: var(--theme);
+  font: 600 11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dnslab-controles {
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.dnslab-legenda {
+  min-height: 6.4em;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 13.4px;
+  line-height: 1.55;
+}
+
+.post-content .dnslab-legenda p {
+  margin: 4px 0 0 !important;
+  font-size: 13.4px !important;
+}
+
+/* ndots */
+.post-content ol.dnslab-tentativas {
+  margin: 10px 0 0 !important;
+  padding-left: 26px;
+}
+
+.post-content .dnslab-tentativas li {
+  font-size: 13px !important;
+}
+
+.dnslab-tentativas small {
+  color: var(--secondary);
+}
+
+/* diagramas em SVG no meio do texto */
+.diagrama {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.diagrama svg {
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+}
+
+.diagrama text {
+  fill: var(--primary);
+  font-family: inherit;
+}
+
+.diagrama .fraco { fill: var(--secondary); }
+.diagrama .caixa { fill: var(--entry); stroke: var(--secondary); stroke-width: 1.5; }
+.diagrama .linha { stroke: var(--secondary); stroke-width: 1.5; fill: none; }
+.diagrama .azul { fill: color-mix(in srgb, var(--dns-azul) 16%, var(--entry)); stroke: var(--dns-azul); stroke-width: 1.5; }
+.diagrama .verde { fill: color-mix(in srgb, var(--dns-verde) 16%, var(--entry)); stroke: var(--dns-verde); stroke-width: 1.5; }
+.diagrama .laranja { fill: color-mix(in srgb, var(--dns-laranja) 16%, var(--entry)); stroke: var(--dns-laranja); stroke-width: 1.5; }
+.diagrama .vermelho { fill: color-mix(in srgb, var(--dns-vermelho) 16%, var(--entry)); stroke: var(--dns-vermelho); stroke-width: 1.5; }
+.diagrama .roxo { fill: color-mix(in srgb, var(--dns-roxo) 16%, var(--entry)); stroke: var(--dns-roxo); stroke-width: 1.5; }
+.diagrama .rosa { fill: color-mix(in srgb, var(--dns-rosa) 16%, var(--entry)); stroke: var(--dns-rosa); stroke-width: 1.5; }
+
+.post-content figure.diagrama > figcaption,
+.post-content figure.ilustra > figcaption {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary);
+}
+
+.post-content figure.diagrama > figcaption code,
+.post-content figure.ilustra > figcaption code {
+  font-size: 12px;
+}
+
+.post-content figure.ilustra {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.post-content figure.ilustra img {
+  margin: 0 auto;
+  border-radius: var(--radius);
+  max-width: min(100%, 620px);
+}
+
+/* tabelas largas rolam pro lado em vez de estourar a coluna */
+.post-content .tabela-larga {
+  overflow-x: auto;
+  margin-bottom: var(--content-gap);
+}
+
+.post-content .tabela-larga table {
+  display: table;
+  margin-bottom: 0;
+  min-width: 560px;
+}
+
+.post-content .mito {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--dns-laranja);
+  background: var(--code-bg);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.post-content .mito p {
+  margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .dnslab-rr {
+    grid-template-columns: 1fr 4em 4em;
+  }
+
+  .dnslab-rr .rr-dado {
+    grid-column: 1 / -1;
+    padding-left: 1em;
+  }
+
+  .dnslab-cache {
+    grid-template-columns: 6em 1fr 7.6em;
+  }
+}

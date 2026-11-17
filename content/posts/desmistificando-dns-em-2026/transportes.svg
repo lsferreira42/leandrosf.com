@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-label="Pilhas de protocolo do DNS em texto puro, DoT, DoH e DoQ">
+<text x="90.0" y="22" text-anchor="middle" font-size="15" font-weight="700">Do53</text>
+<text class="fraco" x="90.0" y="38" text-anchor="middle" font-size="11">porta 53</text>
+<rect class="vermelho" x="10" y="124" width="160" height="34" rx="6"/><text x="90.0" y="146" text-anchor="middle" font-size="12.5" font-weight="600">DNS</text>
+<rect class="vermelho" x="10" y="162" width="160" height="34" rx="6"/><text x="90.0" y="184" text-anchor="middle" font-size="12.5" font-weight="600">UDP ou TCP</text>
+<text class="fraco" x="90.0" y="222" text-anchor="middle" font-size="11">texto puro</text>
+<text x="270.0" y="22" text-anchor="middle" font-size="15" font-weight="700">DoT</text>
+<text class="fraco" x="270.0" y="38" text-anchor="middle" font-size="11">porta 853/TCP</text>
+<rect class="verde" x="190" y="86" width="160" height="34" rx="6"/><text x="270.0" y="108" text-anchor="middle" font-size="12.5" font-weight="600">DNS</text>
+<rect class="verde" x="190" y="124" width="160" height="34" rx="6"/><text x="270.0" y="146" text-anchor="middle" font-size="12.5" font-weight="600">TLS</text>
+<rect class="caixa" x="190" y="162" width="160" height="34" rx="6"/><text x="270.0" y="184" text-anchor="middle" font-size="12.5" font-weight="600">TCP</text>
+<text class="fraco" x="270.0" y="222" text-anchor="middle" font-size="11">RFC 7858</text>
+<text x="450.0" y="22" text-anchor="middle" font-size="15" font-weight="700">DoH</text>
+<text class="fraco" x="450.0" y="38" text-anchor="middle" font-size="11">porta 443</text>
+<rect class="verde" x="370" y="48" width="160" height="34" rx="6"/><text x="450.0" y="70" text-anchor="middle" font-size="12.5" font-weight="600">DNS</text>
+<rect class="verde" x="370" y="86" width="160" height="34" rx="6"/><text x="450.0" y="108" text-anchor="middle" font-size="12.5" font-weight="600">HTTP/2 ou HTTP/3</text>
+<rect class="verde" x="370" y="124" width="160" height="34" rx="6"/><text x="450.0" y="146" text-anchor="middle" font-size="12.5" font-weight="600">TLS ou QUIC</text>
+<rect class="caixa" x="370" y="162" width="160" height="34" rx="6"/><text x="450.0" y="184" text-anchor="middle" font-size="12.5" font-weight="600">TCP ou UDP</text>
+<text class="fraco" x="450.0" y="222" text-anchor="middle" font-size="11">RFC 8484</text>
+<text x="630.0" y="22" text-anchor="middle" font-size="15" font-weight="700">DoQ</text>
+<text class="fraco" x="630.0" y="38" text-anchor="middle" font-size="11">porta 853/UDP</text>
+<rect class="verde" x="550" y="86" width="160" height="34" rx="6"/><text x="630.0" y="108" text-anchor="middle" font-size="12.5" font-weight="600">DNS</text>
+<rect class="verde" x="550" y="124" width="160" height="34" rx="6"/><text x="630.0" y="146" text-anchor="middle" font-size="12.5" font-weight="600">QUIC</text>
+<rect class="caixa" x="550" y="162" width="160" height="34" rx="6"/><text x="630.0" y="184" text-anchor="middle" font-size="12.5" font-weight="600">UDP</text>
+<text class="fraco" x="630.0" y="222" text-anchor="middle" font-size="11">RFC 9250</text>
+<text class="fraco" x="360.0" y="244" text-anchor="middle" font-size="11">Vermelho: qualquer um no caminho lê. Verde: cifrado entre você e o resolvedor.</text>
+</svg>

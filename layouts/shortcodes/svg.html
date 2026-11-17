@@ -1,0 +1,10 @@
+{{- /* Põe um SVG da pasta do post direto no HTML, pra ele herdar as cores do
+       tema. Uso: {{< svg src="arquivo.svg" caption="legenda" >}} */ -}}
+{{- with .Page.Resources.GetMatch (.Get "src") }}
+<figure class="diagrama">
+  {{ .Content | safeHTML }}
+  {{- with $.Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{- else }}
+{{- errorf "svg: não achei %q em %s" (.Get "src") .Page.File.Path }}
+{{- end }}
