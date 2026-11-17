@@ -1,0 +1,11 @@
+{{- /* Miniatura da capa de um post, pra listagens. Recebe um dict com a
+       página ("pagina") e o tamanho em pixels CSS ("largura", "altura").
+       Sai em 1x e 2x; sem capa não sai nada. */ -}}
+{{- $p := .pagina }}
+{{- with $p.Params.cover.image }}
+{{- with $p.Resources.GetMatch . }}
+{{- $um := .Fill (printf "%dx%d Center webp" $.largura $.altura) }}
+{{- $dois := .Fill (printf "%dx%d Center webp" (mul $.largura 2) (mul $.altura 2)) }}
+<img class="miniatura" src="{{ $um.RelPermalink }}" srcset="{{ $um.RelPermalink }} 1x, {{ $dois.RelPermalink }} 2x" width="{{ $.largura }}" height="{{ $.altura }}" alt="" loading="lazy" decoding="async">
+{{- end }}
+{{- end }}

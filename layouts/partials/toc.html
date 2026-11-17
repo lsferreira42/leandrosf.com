@@ -1,0 +1,20 @@
+{{- /* Sumário no alto do texto, com os h2 e h3 do post. Menos de três
+       títulos não vale um sumário. `sumarioNivel: 2` no front matter deixa só
+       os h2, pra post com título demais. */ -}}
+{{- $padrao := `(?s)<h[23] id="[^"]+"[^>]*>.*?</h[23]>` }}
+{{- if eq (int (.Param "sumarioNivel" | default 3)) 2 }}
+{{- $padrao = `(?s)<h2 id="[^"]+"[^>]*>.*?</h2>` }}
+{{- end }}
+{{- $titulos := findRE $padrao .Content }}
+{{- if ge (len $titulos) 3 }}
+<nav class="sumario" aria-label="Neste texto">
+  <span class="rotulo">Neste texto</span>
+  <ol>
+    {{- range $titulos }}
+    {{- $nivel := substr . 2 1 }}
+    {{- $id := index (index (findRESubmatch `id="([^"]+)"` . 1) 0) 1 }}
+    <li class="nivel-{{ $nivel }}"><a href="#{{ $id }}">{{ . | plainify | htmlUnescape }}</a></li>
+    {{- end }}
+  </ol>
+</nav>
+{{- end }}

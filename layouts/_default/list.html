@@ -65,10 +65,36 @@
     transform: scale(1.01);
     background-color: var(--entry);
   }
+  .post-miniatura {
+    flex: 0 0 auto;
+    margin-right: 16px;
+    line-height: 0;
+  }
+  .post-miniatura .miniatura {
+    width: 132px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
   .post-title {
+    flex: 1;
+    min-width: 0;
     text-align: left;
     margin: 0;
     padding: 0;
+  }
+  @media (max-width: 600px) {
+    .post-miniatura {
+      margin-right: 12px;
+    }
+    .post-miniatura .miniatura {
+      width: 84px;
+      height: 56px;
+    }
+    .post-date {
+      min-width: 86px !important;
+    }
   }
   .post-title h2 {
     font-size: 1.2rem;
@@ -80,6 +106,10 @@
     color: var(--secondary);
     font-size: 0.9em;
     min-width: 140px;
+  }
+  .post-leitura {
+    display: block;
+    font-size: 0.85em;
   }
   .post-title a {
     text-decoration: none;
@@ -96,6 +126,9 @@
 {{- $class := "post-entry-custom" }}
 
 <article class="{{ $class }}">
+  {{- with partial "miniatura.html" (dict "pagina" . "largura" 132 "altura" 88) | strings.TrimSpace }}
+  <a class="post-miniatura" href="{{ $page.Permalink }}" tabindex="-1" aria-hidden="true">{{ . | safeHTML }}</a>
+  {{- end }}
   <div class="post-title">
     <h2>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
@@ -109,13 +142,13 @@
     </h2>
     {{- if (ne (.Param "hideSummary") true) }}
     <div class="entry-content">
-      <p>{{ .Summary | plainify | htmlUnescape | truncate 100 }}{{ if .Truncated }}...{{ end }}</p>
+      <p>{{ .Summary | plainify | htmlUnescape | truncate 100 }}</p>
     </div>
     {{- end }}
   </div>
   <div class="post-date">
     {{- if not .Date.IsZero }}
-    <span>{{ .Date.Format (default "2006-01-02" site.Params.DateFormat) }}</span>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>{{ if gt .ReadingTime 0 }}<span class="post-leitura">{{ .ReadingTime }} min de leitura</span>{{ end }}
     {{- end }}
   </div>
 </article>

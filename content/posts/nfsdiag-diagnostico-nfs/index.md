@@ -3,6 +3,11 @@ date = '2026-06-10T10:00:00-03:00'
 draft = false
 title = 'NFSdiag: diagnóstico de NFS pelo lado do cliente'
 tags = ["linux", "nfs", "sre", "devops", "troubleshooting", "c"]
+
+[cover]
+image = "capa.webp"
+alt = "Diagnóstico de NFS entre um cliente e um servidor de arquivos"
+relative = true
 +++
 
 **O `nfsdiag` é uma ferramenta de linha de comando que criei para diagnosticar servidores NFS pelo lado do cliente. Você passa um IP ou hostname, e ele percorre as camadas que normalmente quebram em NFS: rede, rpcbind, versões do protocolo, mountd, exports, permissões, root squash, locking, stale handles e performance.**

@@ -1,0 +1,56 @@
+/* Sumário "Neste texto" no alto dos posts. */
+.sumario {
+  margin: 0 0 var(--content-gap);
+  padding: 14px 18px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.sumario .rotulo {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.sumario ol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding: 0 0 0 20px;
+}
+
+.sumario li {
+  font-size: 14.4px;
+  line-height: 1.5;
+}
+
+.sumario li.nivel-3 {
+  margin-left: 16px;
+  font-size: 13.4px;
+  list-style-type: circle;
+}
+
+.sumario a {
+  color: var(--primary);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.sumario a:hover {
+  text-decoration: underline;
+}
+
+/* Com o cabeçalho fixo do navegador de âncoras, o título não cola no topo. */
+.post-content h2,
+.post-content h3 {
+  scroll-margin-top: 16px;
+}
+
+.post-meta time {
+  white-space: nowrap;
+}

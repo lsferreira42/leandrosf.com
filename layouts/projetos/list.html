@@ -142,7 +142,7 @@
       {{- if .Description }}
         {{ .Description | markdownify | truncate 150 }}
       {{- else }}
-        {{ .Summary | plainify | htmlUnescape | truncate 150 }}{{ if .Truncated }}...{{ end }}
+        {{ .Summary | plainify | htmlUnescape | truncate 150 }}
       {{- end }}
     </div>
     {{- end }}
@@ -157,7 +157,7 @@
 
     <div class="project-meta">
       {{- if not .Date.IsZero }}
-      <span class="project-date">{{ .Date.Format (default "2006-01-02" site.Params.DateFormat) }}</span>
+      <span class="project-date">{{ .Date.Format "2006-01-02" }}</span>
       {{- end }}
       <a href="{{ .Permalink }}" style="color: var(--primary); text-decoration: none; font-weight: 500;">Ler mais →</a>
     </div>

@@ -3,6 +3,11 @@ date = '2026-01-09T12:57:00-03:00'
 draft = false
 title = 'Minha jornada com Fedora e KDE'
 tags = ["linux", "fedora", "kde", "desktop", "opensource", "desenvolvimento"]
+
+[cover]
+image = "capa.webp"
+alt = "Notebook com desktop KDE em uma mesa"
+relative = true
 +++
 
 Faz um ano que voltei pro Fedora com KDE Plasma depois de uma temporada no Mac. Já tinha usado essa combinação anos atrás, mas dessa vez ficou claro que é a stack que funciona melhor pra mim.

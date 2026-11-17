@@ -3,30 +3,33 @@ title = "OpenTofu: Como iniciar no fork do terraform"
 date = "2025-03-20T10:00:00-03:00"
 draft = false
 tags = ["infraestrutura", "iac", "devops", "opentofu", "terraform", "docker"]
-+++
 
-![OpenTofu vs Terraform](/images/opentofu-terraform.png)
+[cover]
+image = "capa.webp"
+alt = "Terraform e OpenTofu lado a lado"
+relative = true
++++
 
 **O OpenTofu é um fork open source do Terraform, criado depois da mudança de licença da HashiCorp. Este guia mostra como instalar o OpenTofu e provisionar uma stack Docker local com três containers.**
 
 ## O que aconteceu com o Terraform?
 
-Em agosto de 2023, a HashiCorp mudou a licença do Terraform de Mozilla Public License (open source) para Business Source License (proprietária). Isso causou preocupação em empresas e desenvolvedores que dependiam da natureza aberta da ferramenta.
+Em agosto de 2023 a HashiCorp trocou a licença do Terraform da Mozilla Public License 2.0 pela Business Source License 1.1. Com a BSL o código continua visível, mas você não pode usar o Terraform pra oferecer um produto que concorra com a HashiCorp. Deixou de ser open source.
 
-{{< figure src="/images/license-change-timeline.png" caption="Timeline da mudança de licença do Terraform" >}}
+A sequência foi rápida:
 
-Como resposta, a Linux Foundation e várias empresas criaram o **OpenTofu**, um fork 100% compatível com o Terraform que mantém a licença open source original.
+- 10 de agosto de 2023: a HashiCorp anuncia a mudança pra BSL.
+- 25 de agosto de 2023: sai o fork, ainda com o nome OpenTF.
+- 20 de setembro de 2023: o projeto entra na Linux Foundation e passa a se chamar OpenTofu.
+- 10 de janeiro de 2024: sai o OpenTofu 1.6.0, a primeira versão estável.
 
-### O que você precisa saber sobre o OpenTofu:
+O OpenTofu partiu do último código do Terraform sob MPL e continua nessa licença. Pra quem já usa Terraform, muda pouco:
 
-1. É um drop-in replacement (substituto direto) do Terraform
-2. Mantém a mesma sintaxe e comandos (apenas troque `terraform` por `tofu`)
-3. Funciona com seu estado e módulos Terraform existentes
-4. Continua sendo open source sob a licença MPL 2.0
+- o binário é `tofu` em vez de `terraform`, com os mesmos subcomandos
+- a sintaxe HCL é a mesma
+- o state e os módulos que você já tem funcionam sem conversão
 
-## Instalação rápida em qualquer sistema
-
-Escolha seu sistema operacional:
+## Instalação
 
 ### Linux (Ubuntu/Debian)
 ```bash
@@ -52,9 +55,9 @@ Verifique a instalação com `tofu version`.
 
 ## Tutorial: stack Docker com três containers
 
-Vamos criar três containers interconectados usando OpenTofu: uma API Node.js, um banco de dados MySQL e um Redis para cache. O mesmo fluxo funciona para infraestrutura local ou em nuvem.
+O exemplo sobe três containers na mesma rede Docker: uma API Node.js, um MySQL e um Redis pra cache. Em nuvem o fluxo é igual, só muda o provider.
 
-{{< figure src="/images/docker-stack-architecture.png" caption="Arquitetura da stack Docker que vamos criar" >}}
+{{< figure src="docker-stack-architecture.webp" caption="Os três containers da stack e a rede que liga eles" >}}
 
 ### 1. Crie a estrutura do projeto
 
@@ -234,7 +237,7 @@ output "app_access_url" {
 
 ### 6. Execute o OpenTofu
 
-Agora, execute:
+Agora roda:
 
 ```bash
 # Inicializar
@@ -247,7 +250,7 @@ tofu plan
 tofu apply -auto-approve
 ```
 
-{{< figure src="/images/opentofu-apply-output.png" caption="Saída do comando tofu apply mostrando a criação bem-sucedida dos containers" >}}
+{{< figure src="opentofu-apply-output.webp" caption="Saída do tofu apply com os containers criados" >}}
 
 ### Verificando a infraestrutura
 
@@ -255,26 +258,22 @@ tofu apply -auto-approve
 docker ps
 ```
 
-Isso cria a stack Docker completa com OpenTofu. Para destruir, execute 
+Os três containers aparecem na lista. Pra destruir tudo:
 
-`tofu destroy -auto-approve`
+```bash
+tofu destroy -auto-approve
+```
 
-## Próximos passos
+## Depois disso
 
-Este tutorial cobriu apenas o básico do OpenTofu. A ferramenta suporta todos os recursos do Terraform que você já conhece:
+Isso é só o básico. O resto do que você já usa no Terraform continua valendo: providers de AWS, GCP e Azure, módulos, workspaces, backend remoto e `import` de recurso existente.
 
-- Gerenciamento de múltiplas clouds (AWS, GCP, Azure)
-- Módulos reutilizáveis e composições
-- Workspaces para ambientes isolados
-- Backends remotos para colaboração em equipe
-- Importação de recursos existentes
-
-O OpenTofu usa o mesmo formato de state do Terraform, então não tem migração pra fazer, e os módulos e provedores do Terraform Registry funcionam sem alteração.
+O OpenTofu lê o mesmo formato de state, então não tem migração pra fazer: é rodar `tofu init` no diretório que já existe. Os providers e módulos vêm do registry do próprio OpenTofu, que espelha o que está publicado pro Terraform.
 
 ## Recursos
 
 - [Site oficial do OpenTofu](https://opentofu.org/)
 - [Repositório GitHub do OpenTofu](https://github.com/opentofu/opentofu)
 - [Documentação do provedor Docker](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs)
-- [Anúncio sobre a mudança de licença da HashiCorp](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license)
-- [OpenTofu vs. Terraform: Análise completa](https://opensource.com/article/23/10/opentofu-terraform-fork) 
+- [Anúncio da mudança de licença da HashiCorp](https://www.hashicorp.com/blog/hashicorp-adopts-business-source-license)
+- [Anúncio do OpenTofu pela Linux Foundation](https://www.linuxfoundation.org/press/announcing-opentofu)

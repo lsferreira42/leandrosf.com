@@ -20,7 +20,7 @@
     </div>
     <div class="social-icons">
         {{- range .Site.Params.socialIcons }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me" title="{{ .title | default .name }}" aria-label="{{ .title | default .name }}">{{ partial "svg.html" . }}</a>
         {{- end }}
     </div>
     
@@ -41,7 +41,21 @@
             transform: scale(1.01);
             background-color: var(--entry);
           }
+          .post-miniatura-home {
+            flex: 0 0 auto;
+            margin-right: 14px;
+            line-height: 0;
+          }
+          .post-miniatura-home .miniatura {
+            width: 96px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+          }
           .post-title-home {
+            flex: 1;
+            min-width: 0;
             text-align: left;
             margin: 0;
             padding: 0;
@@ -57,12 +71,16 @@
         {{- $limit := 3 }}
         {{- range (first $limit $pages) }}
         <div class="post-item-home">
+            {{- $post := . }}
+            {{- with partial "miniatura.html" (dict "pagina" . "largura" 96 "altura" 64) | strings.TrimSpace }}
+            <a class="post-miniatura-home" href="{{ $post.RelPermalink }}" tabindex="-1" aria-hidden="true">{{ . | safeHTML }}</a>
+            {{- end }}
             <div class="post-title-home">
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
             </div>
             <div class="post-date-home">
                 {{- if not .Date.IsZero }}
-                <span>{{ .Date.Format (default "2006-01-02" site.Params.DateFormat) }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
                 {{- end }}
             </div>
         </div>

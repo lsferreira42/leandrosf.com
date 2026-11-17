@@ -1,0 +1,9 @@
+{{- /* Linha de metadados do post: data e tempo de leitura. */ -}}
+{{- $meta := slice }}
+{{- if not .Date.IsZero }}
+{{- $meta = $meta | append (printf `<time datetime="%s">%s</time>` (.Date.Format "2006-01-02") (.Date | time.Format (default ":date_long" site.Params.DateFormat))) }}
+{{- end }}
+{{- if and (.Param "ShowReadingTime") (gt .ReadingTime 0) }}
+{{- $meta = $meta | append (printf "%d min de leitura" .ReadingTime) }}
+{{- end }}
+{{- delimit $meta "&nbsp;·&nbsp;" | safeHTML -}}
