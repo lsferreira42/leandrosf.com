@@ -2,43 +2,68 @@
 title = "Sobre"
 date = "2023-05-20"
 draft = false
+description = "Engenheiro de plataforma e desenvolvedor, com mais de 15 anos entre infraestrutura, automação e desenvolvimento."
+aliases = ["/pages/sobre/"]
+ShowToc = false
+ShowReadingTime = false
 +++
 
 {{< figure src="/pic.jpeg" width="300px" alt="Leandro Ferreira" align="center" >}}
 
 ## Quem sou eu
 
-Olá, sou Leandro Ferreira, especialista em engenharia de plataforma e desenvolvedor de software com mais de 15 anos de experiência em infraestrutura, automação e desenvolvimento. Atualmente trabalho na Digibee, tirando a plataforma de rodar numa nuvem só e fazendo ela operar como PaaS multi-cloud.
+Sou Leandro Ferreira, engenheiro de plataforma e desenvolvedor, de São Paulo. Trabalho desde 2010 com infraestrutura, automação e desenvolvimento, quase sempre com Linux e open source.
 
-## Minha jornada
+Hoje sou Platform Engineer Specialist na Digibee, tirando a plataforma de rodar numa nuvem só e fazendo ela operar como PaaS multi-cloud. Também sou sócio da [ftclabs](https://www.ftclabs.com.br), onde construo e opero os produtos que aparecem na página de [projetos](/projetos/).
 
-Minha jornada profissional foi construída na interseção entre desenvolvimento e infraestrutura, sempre com foco em criar soluções escaláveis e eficientes. Comecei minha carreira em infraestrutura tradicional e evolui para ambientes cloud, automação e DevOps, trabalhando em empresas como GetNinjas, Totvs, Locaweb, GoCache CDN, UolHost e Magalu Cloud.
+## De onde eu vim
 
-Ao longo dos anos, desenvolvi uma paixão por resolver problemas complexos de infraestrutura e arquitetura, aplicando práticas de IaC (Infraestrutura como Código), observabilidade e FinOps para otimizar recursos e melhorar a performance de sistemas distribuídos.
+Comecei como técnico de infraestrutura no datacenter da Totvs e fui pra administração de sistemas no UOL, na plataforma de hospedagem do UOL Host, onde já dividia o tempo entre operar servidor e escrever código em Python, Perl, C, Lua e Go. Desde então fico nesse meio do caminho entre desenvolvimento e operação.
+
+Depois vieram alguns anos de DevOps e AWS em empresas menores, um ano como Software Engineer na GoCache CDN escrevendo Python, Go e Lua no OpenResty, e um ano na Locaweb como especialista de arquitetura de soluções, desenhando e migrando ambientes pra AWS.
+
+No GetNinjas fiquei quase cinco anos, primeiro como Senior DevOps Engineer e depois como Tech Lead do time de plataforma: Kubernetes, AWS e GCP, Terraform, observabilidade e FinOps. Na Magalu Cloud fui especialista SRE/DevOps, cuidando de confiabilidade em Kubernetes, OpenStack, Kafka, RabbitMQ e ClickHouse.
+
+| Período | Onde | O que fiz |
+|---|---|---|
+| 2026, atual | Digibee | Platform Engineer Specialist |
+| 2024 a 2026 | Magalu Cloud | Especialista SRE/DevOps |
+| 2020 a 2024 | GetNinjas | Senior DevOps Engineer, depois DevOps Tech Lead |
+| 2019 a 2020 | Locaweb | Especialista de arquitetura de soluções |
+| 2018 | GoCache CDN | Software Engineer |
+| 2016 a 2017 | Creditas | DevOps Engineer |
+| 2012 a 2014 | UOL (UOL Host) | Administrador de sistemas Linux |
+| 2010 a 2011 | Totvs | Técnico de infraestrutura |
+
+A lista completa, com as empresas menores no meio, está no [LinkedIn](https://www.linkedin.com/in/lsferreira42/) e no [CV](https://github.com/lsferreira42/cv).
 
 ## O que faço
 
-Meu trabalho envolve principalmente:
+- Arquitetura em AWS, GCP e OpenStack, incluindo levar plataforma de uma nuvem só pra várias
+- Kubernetes: clusters gerenciados e on-premises, GitOps com ArgoCD, troubleshooting de control plane, rede e scheduling
+- Infraestrutura como código com Terraform, Ansible e Puppet
+- Práticas de SRE: SLIs, SLOs, error budget, resposta a incidente e postmortem
+- Observabilidade com Prometheus, Thanos, Grafana, Sentry e Elastic Stack
+- Ferramentas e automação em Python, Go e Shell Script
+- FinOps: acompanhar e reduzir custo de cloud
+- Liderança e mentoria de time de plataforma
 
-- **Arquitetura Multi-Cloud**: Desenho e implementação de arquiteturas em AWS, GCP e outros provedores, incluindo migração de plataformas single-cloud para multi-cloud
-- **Kubernetes**: Gerenciamento e implantação de clusters e recursos
-- **Infraestrutura como Código**: Terraform, Ansible, Puppet
-- **Observabilidade**: Implementação de monitoramento com Prometheus, Grafana e Elastic Stack
-- **Desenvolvimento**: Python, Golang, Shell Script e integração com sistemas cloud
-- **Mentoria Técnica**: Liderança de equipes de plataforma e DevOps
+## Ferramentas
 
-## Habilidades-chave
+- **Programação**: Python, Go, Lua, Shell Script
+- **Cloud e orquestração**: AWS, GCP, OpenStack, Kubernetes, Docker, LXC, ArgoCD, Helm, Istio
+- **CI/CD**: Jenkins, GitLab CI, GitHub Actions
+- **Bancos e cache**: MySQL/MariaDB, PostgreSQL, MongoDB, ClickHouse, Redis, Memcached, Varnish
+- **Mensageria**: RabbitMQ, Kafka
+- **Linux e web**: Nginx, Apache, CDN, NFS, ZFS, performance tuning
 
-- **Programação**: Python, Golang, Lua, Shell Script
-- **Cloud & DevOps**: AWS, GCP, Kubernetes, Terraform, Docker, CI/CD
-- **Banco de Dados & Cache**: MySQL/MariaDB, PostgreSQL, MongoDB, Redis, Memcached, Varnish
-- **Linux & Sistemas**: Performance Tuning, Nginx, Apache, Troubleshooting de sistemas distribuídos
+## Formação
+
+Pós-graduação em DevOps e Arquitetura Cloud na FIAP, em andamento, e graduação em tecnologia da informação pela Estácio. Inglês avançado e espanhol básico.
 
 ## Contato
 
-Se você tem interesse em DevOps, arquitetura cloud ou desenvolvimento de infraestrutura, fique à vontade para entrar em contato:
-
 - GitHub: [lsferreira42](https://github.com/lsferreira42)
 - LinkedIn: [lsferreira42](https://www.linkedin.com/in/lsferreira42/)
-- CV: [GitHub CV](https://github.com/lsferreira42/cv)
-- BlueSky: [lsferreira42](https://bsky.app/profile/leandrosf.com) 
+- CV: [github.com/lsferreira42/cv](https://github.com/lsferreira42/cv)
+- Bluesky: [leandrosf.com](https://bsky.app/profile/leandrosf.com)
