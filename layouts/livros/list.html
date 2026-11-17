@@ -1,0 +1,31 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">{{ . | markdownify }}</div>
+  {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content">{{ . }}</div>
+{{- end }}
+
+<div class="estante">
+  {{- range .RegularPages.ByDate.Reverse }}
+  <a class="livro" href="{{ .RelPermalink }}">
+    {{- with .Resources.GetMatch "capa.*" }}
+    {{- $p := .Fill "240x360 Center webp" }}
+    {{- $g := .Fill "480x720 Center webp" }}
+    <img class="livro-capa" src="{{ $p.RelPermalink }}" srcset="{{ $p.RelPermalink }} 1x, {{ $g.RelPermalink }} 2x" width="{{ $p.Width }}" height="{{ $p.Height }}" alt="Capa de {{ $.Title }}" loading="lazy" decoding="async">
+    {{- else }}
+    <span class="livro-capa livro-sem-capa">{{ .Title }}</span>
+    {{- end }}
+    <span class="livro-titulo">{{ .Title }}</span>
+    {{- with .Params.autor }}<span class="livro-autor">{{ . }}</span>{{ end }}
+  </a>
+  {{- end }}
+</div>
+
+{{- end }}{{- /* end main */ -}}

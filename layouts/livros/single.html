@@ -1,0 +1,51 @@
+{{- define "main" }}
+
+<article class="post-single livro-pagina">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <div class="livro-cabeca">
+      {{- with .Resources.GetMatch "capa.*" }}
+      {{- $p := .Fit "300x450 webp" }}
+      {{- $g := .Fit "600x900 webp" }}
+      <img class="livro-capa" src="{{ $p.RelPermalink }}" srcset="{{ $p.RelPermalink }} 1x, {{ $g.RelPermalink }} 2x" width="{{ $p.Width }}" height="{{ $p.Height }}" alt="Capa de {{ $.Title }}">
+      {{- end }}
+      <div class="livro-dados">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{- with .Params.autor }}<p class="livro-autor">{{ . }}</p>{{ end }}
+        {{- with .Description }}<p class="livro-descricao">{{ . }}</p>{{ end }}
+        <dl class="livro-ficha">
+          {{- with .Params.edicao }}<dt>Edição</dt><dd>{{ . }}</dd>{{ end }}
+          {{- with .Params.lido }}<dt>Lido em</dt><dd>{{ . }}</dd>{{ end }}
+          {{- with .Params.link }}<dt>Onde ler</dt><dd><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ (urls.Parse .).Host | strings.TrimPrefix "www." }}</a></dd>{{ end }}
+          {{- if gt .ReadingTime 0 }}<dt>Este resumo</dt><dd>{{ .ReadingTime }} min de leitura</dd>{{ end }}
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+
+    {{- with .Params.highlights }}
+    <h2 id="highlights">Highlights</h2>
+    {{- range . }}
+    <blockquote class="highlight-livro">
+      <p>{{ .texto | markdownify }}</p>
+      {{- with .onde }}<footer>{{ . }}</footer>{{ end }}
+    </blockquote>
+    {{- end }}
+    {{- end }}
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      {{- range (.GetTerms "tags") }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+  </footer>
+</article>
+
+{{- end }}{{/* end main */}}

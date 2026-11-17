@@ -1,0 +1,131 @@
+/* Estante de livros: grade de capas em /livros/ e a página de cada livro. */
+.estante {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 28px 22px;
+  margin-top: 24px;
+}
+
+.livro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.livro-capa {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 4px 8px 8px 4px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.livro:hover .livro-capa {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.24);
+}
+
+.livro-sem-capa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: var(--code-bg);
+  text-align: center;
+  font-weight: 600;
+}
+
+.livro-titulo {
+  margin-top: 8px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.livro .livro-autor {
+  font-size: 12.6px;
+  color: var(--secondary);
+}
+
+.livro-cabeca {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.livro-cabeca .livro-capa {
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+.livro-dados {
+  flex: 1;
+  min-width: 0;
+}
+
+.livro-dados .post-title {
+  margin-bottom: 4px;
+}
+
+.livro-dados .livro-autor {
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+
+.livro-descricao {
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.livro-ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 14px;
+  font-size: 13.4px;
+}
+
+.livro-ficha dt {
+  color: var(--secondary);
+}
+
+.livro-ficha dd {
+  margin: 0;
+}
+
+.livro-ficha a {
+  box-shadow: 0 1px 0 var(--primary);
+}
+
+.post-content blockquote.highlight-livro {
+  margin: 0 0 18px;
+  padding: 10px 16px;
+  border-inline-start: 4px solid var(--tertiary);
+  background: var(--code-bg);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.post-content blockquote.highlight-livro p {
+  margin-bottom: 6px !important;
+}
+
+.highlight-livro footer {
+  font-size: 12.6px;
+  color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+  .livro-cabeca {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .livro-dados {
+    width: 100%;
+  }
+}
