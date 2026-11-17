@@ -162,7 +162,7 @@ Tente `www.registro.br`, `pt.wikipedia.org` e um nome que não existe. Em `.br` 
 
 A zona raiz é pequena. Hoje ela delega 1.436 TLDs e não faz mais nada: cada TLD tem os seus NS com TTL de 172800 segundos (dois dias) e, se for assinado, um DS com TTL de um dia.
 
-Quem responde por ela são 13 nomes, de `a.root-servers.net` a `m.root-servers.net`, operados por 12 organizações (a Verisign cuida de duas letras). Cada nome é um endereço IP anunciado por anycast de muitos lugares ao mesmo tempo: em 17 de novembro de 2026 eram 2.046 instâncias no mundo. Somando os dados de cada operador, o Brasil tem por volta de 106 delas em 76 localidades, o segundo país com mais instâncias, atrás dos Estados Unidos. Só a letra F tem 71 aqui.
+Quem responde por ela são 13 nomes, de `a.root-servers.net` a `m.root-servers.net`, operados por 12 organizações (a Verisign cuida de duas letras). Cada nome é um endereço IP anunciado por anycast de muitos lugares ao mesmo tempo: em novembro de 2026 eram 2.046 instâncias no mundo. Somando os dados de cada operador, o Brasil tem por volta de 106 delas em 76 localidades, o segundo país com mais instâncias, atrás dos Estados Unidos. Só a letra F tem 71 aqui.
 
 Dá pra perguntar a um servidor raiz qual instância respondeu, usando a classe CHAOS:
 
@@ -954,7 +954,7 @@ Se o autoritativo tem o dado novo e o recursivo o antigo, é cache, e o TTL que 
 
 ## Referências {#referencias}
 
-Tudo o que está neste post saiu de algum destes lugares, ou foi medido com `dig` em 17 de novembro de 2026.
+Tudo o que está neste post saiu de algum destes lugares, ou foi medido com `dig`.
 
 ### As RFCs que valem a leitura
 
